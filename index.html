@@ -1,71 +1,59 @@
-w<!DOCTYPE html>
-<html class="theme-dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="src/ico/SCALE CTP_logo1.ico" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Neurophet SCALE CTP</title>
-  <link href="src/common/css/common.css" rel="stylesheet" />
-</head> 
-<body>
-  <div id="root">
-    <div class="ctp-login-page">
-      <div class="ctp-login-wrap">
-        <div class="ctp-login-p"></div>
-        <div class="ctp-login-form-wrap">
-          <div class="ctp-login-form">
-            <div class="ctp-login-form-logo">
-              <img src="src\img\logo\Product Logo.png" alt="Product Logo" style="width: auto; height: auto  ;" />
-            </div>
-            <div class="ctp-login-form-group">
-              <form id="loginForm">
-                <div class="ctp-login-input-group">
-                  <div class="ctp-textfield">
-                    <div class="ns-textfield-wrap ns-textfield-medium">
-                      <input id="ctp-login-textfield-id" name="ctp-login-textfield-id" type="text"
-                        class="ns-textfield ns-textfield-start-icon" placeholder="ID" autocomplete="off"
-                        style="padding-right: 11px" />
-                      <span class="ns-textfield-icon-wrap start">
-                        <img src="src\assets\user.svg" alt="User Icon" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="ctp-login-input-group">
-                  <div class="ctp-textfield">
-                    <div class="ns-textfield-wrap ns-textfield-medium">
-                      <input id="ctp-login-textfield-password" name="ctp-login-textfield-password" type="password"
-                        class="ns-textfield ns-textfield-start-icon" placeholder="Password" autocomplete="off"
-                        style="padding-right: 11px" />
-                      <span class="ns-textfield-icon-wrap start">
-                        <img src="src\assets\password.svg" class="ctp-icon-pass" alt="Password Icon" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="ctp-login-button-group">
-                  <button type="submit" class="ns-button ns-button-primary ns-button-large"
-                    id="ctp-login-button-login">Log In</button>
-                </div>
-              </form>
-            </div>
-          </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCALE MRA PROTOTYPE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html, body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Spoqa Han San', sans-serif;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }  
+    </style>
+</head>
+<body class="bg-[#282828] flex items-center justify-center">
+    <div class="bg-[#383838] p-6 sm:p-12 rounded border border-white/20 max-w-[456px] w-full">
+        <div class="mb-4 text-center">
+            <img src="src/img/Product Logo.png" class="w-full h-auto" alt="Product Logo">
         </div>
-        <div class="ctp-login-p"></div>
-        <div class="ctp-login-bottom">
-          <span>ⓒ 2024 <a href="https://www.neurophet.com/" rel="noopener noreferrer" target="_blank">NEUROPHET,
-              Inc.</a> All rights are reserved.</span>
+        <div class="mb-6">
+            <div class="flex items-center bg-[#1e1e1e] border border-white/30 rounded-sm px-3 mb-4">
+                <img src="src/img/password.png" alt="Password input field icon" class="mr-2">
+                <input type="password" id="passwordInput" placeholder="Enter password" class="flex-grow w-full h-8 px-2 text-sm text-white bg-[#1e1e1e] rounded-sm outline-none">
+            </div>
+            <div id="startButton" class="bg-[#1077fe] rounded-[3px] cursor-pointer text-lg text-white py-3 px-4 text-center">
+                Start
+            </div>
+            <p id="errorMessage" class="text-red-500 text-sm hidden text-center mt-4">Incorrect password. Please try again.</p>
         </div>
-      </div>
+        <div class="text-center text-sm text-white/60">
+            <p>마케팅/홍보 등의 목적을 위한 프로토타입제품입니다.</p>
+        </div>
     </div>
-  </div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function (n) {
-      n.preventDefault();
-      var t = document.getElementById("ctp-login-textfield-id").value;
-      var i = document.getElementById("ctp-login-textfield-password").value;
-      t === "mkt" && i === "mkt" ? window.location.href = "analysis.html" : alert("Invalid ID or Password");
-    });
-  </script>
+    <script>
+        function handleAuthentication() {
+            const passwordInput = document.getElementById('passwordInput');
+            const errorMessage = document.getElementById('errorMessage');
+            const correctPassword = 'ksin';
+            
+            if (passwordInput.value === correctPassword) {
+                window.location.href = 'prototype.html';
+            } else {
+                errorMessage.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('startButton').addEventListener('click', handleAuthentication);
+        document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission
+                handleAuthentication();
+            }
+        });
+    </script>
 </body>
+</html>
