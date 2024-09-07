@@ -23,13 +23,17 @@
             justify-content: center;
         }
 
-        .icon-disabled::after {
-            content: url('https://cdn-icons-png.flaticon.com/512/64/64572.png'); /* Access Denied Icon */
-            position: absolute;
+        .icon-disabled::before {
+             position: absolute;
             width: 16px;
             height: 16px;
             opacity: 0.6;
             pointer-events: none;
+            display: none; /* Hide by default */
+        }
+
+        .icon-disabled:hover::before {
+            display: block; /* Show on hover */
         }
  
     </style>
