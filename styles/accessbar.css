@@ -1,16 +1,4 @@
-.accessbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333; /* or whatever color you want */
-    z-index: 1000; /* Ensure it is above other elements */
-    height: 50px; /* Adjust height as needed */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-} 
+
  
 .product-logo {
     display: flex;
