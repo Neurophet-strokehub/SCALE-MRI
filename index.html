@@ -1,88 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SCALE MRA PROTOTYPE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         html, body {
             min-height: 100vh;
             margin: 0;
             font-family: 'Spoqa Han San', sans-serif;
-            overflow-x: hidden;
-        }
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }  
     </style>
 </head>
-<body class="bg-[#282828] flex items-center justify-center">
-    <div class="bg-[#383838] p-6 sm:p-12 rounded border border-white/20 max-w-[456px] w-full">
-        <div class="mb-4 text-center">
-            <img src="logo/SCALE MRI-LOGIN PAGE.png" style="scale: 0.8; margin-bottom: 3rem;" alt="Product Logo">
-        </div>
-        <div class="mb-6">
-            <div class="flex items-center bg-[#1e1e1e] border border-white/30 rounded-sm px-3 mb-4">
-                <span class="material-icons text-white mr-2">person</span>
-                <input type="text" id="usernameInput" placeholder="Enter username" class="flex-grow w-full h-8 px-2 text-sm text-white bg-[#1e1e1e] rounded-sm outline-none">
+<body>
+    <div class="container">
+        <div class="flex flex-col justify-center items-center w-full h-full absolute left-0 top-0 overflow-hidden bg-[#282828]">
+            <div class="flex flex-col justify-center items-center max-w-full sm:max-w-[456px] gap-5 p-6 sm:p-12 rounded bg-[#383838] border border-white/20">
+                <!-- logo img -->
+                <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 mb-4">
+                    <img src="logo\SCALE MRI-LOGIN PAGE.png" class="w-360PX h-80PX" alt="Product Logo">
+                </div>
+                <!-- password ~ description -->
+                <div class="flex flex-col justify-center items-center gap-6">
+                    <!-- password -->
+                    <div class="flex items-center self-stretch h-10 bg-[#1e1e1e] border border-white/30 rounded-sm px-3 overflow-hidden">
+                        <img src="logo\password.png" alt="Password input field icon" class="mr-2" />
+                        <input type="password" id="passwordInput" placeholder="Enter password" class="flex-grow w-full h-8 px-2 text-sm text-white bg-[#1e1e1e] rounded-sm outline-none" />
+                    </div>
+                    <div id="startButton" class="flex justify-center items-center w-full h-12 bg-[#1077fe] rounded-[3px] cursor-pointer px-4 py-3">
+                        <p class="text-lg text-white">Start</p>
+                    </div>
+                        <p id="errorMessage" class="text-red-500 text-sm hidden">Incorrect password. Please try again.</p>
+                    <div class="flex flex-col justify-center items-center gap-3">
+                        <div class="w-full h-px bg-white/20"></div>
+                        <div class="flex flex-col items-center gap-3">
+                            <p class="text-sm text-white/60"> Do not share the password with any other authorized persons. </p>
+                            <p class="text-sm text-white/60"> If you forget your password, contact a service representative. </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center bg-[#1e1e1e] border border-white/30 rounded-sm px-3 mb-4">
-                <span class="material-icons text-white mr-2">lock</span>
-                <input type="password" id="passwordInput" placeholder="Enter password" class="flex-grow w-full h-8 px-2 text-sm text-white bg-[#1e1e1e] rounded-sm outline-none">
-            </div>
-            <div id="startButton" class="bg-[#1077fe] rounded-[3px] cursor-pointer text-lg text-white py-3 px-4 text-center">
-                Start
-            </div>
-            <p id="errorMessage" class="text-red-500 text-sm hidden text-center mt-4">Incorrect username or password. Please try again.</p>
-        </div>
-        <div class="text-center text-sm text-white/60">
-            <p>마케팅/홍보/자문 등의 목적으로 제작된 시연제품입니다.</p>
         </div>
     </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const usernameInput = document.getElementById('usernameInput');
+        function handleAuthentication() {
             const passwordInput = document.getElementById('passwordInput');
             const errorMessage = document.getElementById('errorMessage');
-            const startButton = document.getElementById('startButton');
-
-            async function handleAuthentication() {
-                const username = usernameInput.value.trim();
-                const password = passwordInput.value.trim();
-
-                try {
-                    const response = await fetch('http://localhost:3000/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ username, password })
-                    });
-                    const result = await response.json();
-
-                    if (result.success) {
-                        window.location.href = 'html/prototype.html';
-                    } else {
-                        errorMessage.textContent = result.message;
-                        errorMessage.classList.remove('hidden');
-                    }
-                } catch (error) {
-                    errorMessage.textContent = 'An error occurred. Please try again.';
-                    errorMessage.classList.remove('hidden');
-                }
+            const correctPassword = 'ksin';
+            
+            if (passwordInput.value === correctPassword) {
+                window.location.href = 'prototype.html';
+            } else {
+                errorMessage.classList.remove('hidden');
             }
+        }
 
-            function handleEnterKey(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    handleAuthentication();
-                }
+        document.getElementById('startButton').addEventListener('click', handleAuthentication);
+
+        document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevents default form submission behavior
+                handleAuthentication();
             }
-
-            startButton.addEventListener('click', handleAuthentication);
-            usernameInput.addEventListener('keydown', handleEnterKey);
-            passwordInput.addEventListener('keydown', handleEnterKey);
-        });
+        });  
     </script>
 </body>
+
 </html>
