@@ -2,109 +2,84 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>SCALE MRA PROTOTYPE</title>
-	<script src="https://cdn.tailwindcss.com"></script>
-	<style>
-		html,
-		body {
-			width: 100%;
-			margin: 0;
-			padding: 0;
-			background-color: #383838;
-			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.20);
-		}
-	</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCALE MRA PROTOTYPE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #383838;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.20);
+        }
+
+        .icon-disabled {
+            position: relative;
+            cursor: not-allowed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-disabled::after {
+            content: url('https://cdn-icons-png.flaticon.com/512/64/64572.png'); /* Access Denied Icon */
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+ 
+    </style>
 </head>
 
 <body>
-	<div class="w-full flex justify-between items-center bg-[#383838] px-5">
-		<!-- Logo or main icon -->
-		<div class="flex items-center gap-1" style="padding-left: 1rem;">
-			<img src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo">
+    <div class="w-full flex justify-between items-center bg-[#383838] px-5">
+        <!-- Logo or main icon -->
+        <div class="flex items-center gap-1" style="padding-left: 1rem;">
+            <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
+        </div>
 
-		</div>
+        <!-- Header right section -->
+        <div class="h-12 flex justify-end items-center gap-3">
+            <!-- Button 1 -->
+            <div class="w-6 h-6 icon-disabled flex justify-center items-center">
+                <img src="/logo/02_accessbar-setting.png" alt="Accessbar Setting" class="w-6 h-6">
+            </div>
 
-		<!-- Header right section -->
-		<div class="h-12 flex justify-end items-center gap-4">
-			<!-- Button 1 -->
-			<div class="w-6 h-6">
-				<img src="/logo/02_accessbar-setting.png" alt="Product Logo">
-			</div>
+            <!-- Divider -->
+            <div class="h-4 w-px bg-white"></div>
 
-			<!-- Divider -->
-			<div class="h-4 w-px bg-white"></div>
+            <!-- Minimize Button -->
+            <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
+                </svg>
+            </button>
 
-			<!-- Minimize Button -->
-			<button class="w-8 h-8 flex justify-center items-center p-1 rounded-sm ">
-				<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
-				</svg>
-			</button>
+            <!-- Maximize Button -->
+            <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
+                </svg>
+            </button>
 
-			<!-- Maximize Button -->
-			<button id="maximizeBtn"
-				class="w-8 h-8 flex justify-center items-center p-1 rounded-sm  hidden">
-				<svg id="maximizeIcon" class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg">
-					<rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
-				</svg>
-			</button>
+            <!-- Close Button -->
+            <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
 
-			<!-- Restore Button -->
-			<button class="w-8 h-8 flex justify-center items-center p-1 rounded-sm ">
-				<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg">
-					<rect x="3" y="3" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"></rect>
-					<rect x="13" y="13" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"></rect>
-				</svg>
-			</button>
-
-
-			<!-- Button 4 -->
-			<button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm ">
-				<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-					</path>
-				</svg>
-			</button>
-		</div>
-	</div>
-	<script>
-		const minimizeBtn = document.getElementById('minimizeBtn');
-		const maximizeBtn = document.getElementById('maximizeBtn');
-		const maximizeIcon = document.getElementById('maximizeIcon');
-		const minimizeIcon = document.getElementById('minimizeIcon');
-
-		// Initial state
-		let isMaximized = false;
-
-		function toggleButtons() {
-			if (isMaximized) {
-				minimizeBtn.classList.remove('hidden');
-				maximizeBtn.classList.add('hidden');
-			} else {
-				minimizeBtn.classList.add('hidden');
-				maximizeBtn.classList.remove('hidden');
-			}
-		}
-
-		minimizeBtn.addEventListener('click', () => {
-			isMaximized = !isMaximized;
-			toggleButtons();
-		});
-
-		maximizeBtn.addEventListener('click', () => {
-			isMaximized = !isMaximized;
-			toggleButtons();
-		});
-
-		// Initial setup
-		toggleButtons();
-	</script>
+    <script>
+        document.getElementById('logo').addEventListener('click', function() {
+            window.location.reload();
+        });
+    </script>
 </body>
 
 </html>
