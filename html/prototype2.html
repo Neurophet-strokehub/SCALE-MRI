@@ -13,6 +13,20 @@
             padding: 0;
             background-color: #383838;
             box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.20);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 3rem; /* Adjust based on the height of the access bar */
+        }
+
+        .accessbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensures the access bar is on top of other content */
+            background-color: #383838;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.20);
         }
 
         .icon-disabled {
@@ -24,7 +38,7 @@
         }
 
         .icon-disabled::before {
-             position: absolute;
+            position: absolute;
             width: 16px;
             height: 16px;
             opacity: 0.6;
@@ -35,15 +49,13 @@
         .icon-disabled:hover::before {
             display: block; /* Show on hover */
         }
- 
     </style>
 </head>
 
 <body>
-<section class="accessbar">
-    <div class="w-full flex justify-between items-center bg-[#383838] px-5">
+    <section class="accessbar w-full flex justify-between items-center px-5 py-2">
         <!-- Logo or main icon -->
-        <div class="flex items-center gap-1" style="padding-left: 1rem;">
+        <div class="flex items-center gap-1 pl-4">
             <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
         </div>
 
@@ -78,12 +90,11 @@
                 </svg>
             </button>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="body">
-     
-</section>
+    <section class="body mt-16">
+        <!-- Main content goes here -->
+    </section>
 
     <script>
         document.getElementById('logo').addEventListener('click', function() {
