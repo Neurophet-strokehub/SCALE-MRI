@@ -15,7 +15,7 @@
             box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.20);
         }
 
-        accee.icon-disabled {
+        .icon-disabled {
             position: relative;
             cursor: not-allowed;
             display: flex;
@@ -39,7 +39,8 @@
     </style>
 </head>
 
-<body> 
+<body>
+<section class="accessbar">
     <div class="w-full flex justify-between items-center bg-[#383838] px-5">
         <!-- Logo or main icon -->
         <div class="flex items-center gap-1" style="padding-left: 1rem;">
@@ -77,7 +78,12 @@
                 </svg>
             </button>
         </div>
-    </div> 
+    </div>
+</section>
+
+<section class="body">
+    
+</section>
 
     <script>
         document.getElementById('logo').addEventListener('click', function() {
