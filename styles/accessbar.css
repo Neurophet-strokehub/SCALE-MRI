@@ -3,10 +3,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    background-color: #333; /* or whatever color you want */
+    z-index: 1000; /* Ensure it is above other elements */
+    height: 50px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+} 
  
 .product-logo {
     display: flex;
