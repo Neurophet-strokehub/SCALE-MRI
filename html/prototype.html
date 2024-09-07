@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preview</title>
-    <link rel="stylesheet" href="styles/style.css">
-
+    <link rel="stylesheet" href="styles/accessbar.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html,
@@ -18,12 +17,40 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+
     </style>
 
 </head>
 
 <body>
     <div class="w-full h-full relative overflow-hidden bg-[#282828]">
+            <!-- Header -->
+            <div class="accessbar">
+                <div class="product-logo">
+                    <img class="vector-icon" alt="" src="logo\02_accessbar-logo.png">
+                </div>
+                <div class="frame-parent">
+                    <div class="dropdownbuttonl-wrapper">
+                        <div class="dropdownbuttonl">
+                            <img class="icon-settings" alt="" src="icon_Settings.svg">
+                        </div>
+                    </div>
+                    <div class="divaderd-parent">
+                        <div class="divaderd">
+                        </div>
+                        <div class="buttond">
+                            <img class="icon-windowminimize" alt="" src="icon_WindowMinimize.svg">
+                        </div>
+                        <div class="buttond">
+                            <img class="icon-windowminimize" alt="" src="icon_WindowRestore.svg">
+                        </div>
+                        <div class="buttond">
+                            <img class="icon-closesmall" alt="" src="icon_CloseSmall.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         <div
             class="flex flex-col justify-start items-start absolute left-1/2 transform -translate-x-1/2 top-12 overflow-hidden gap-10 pt-10 bg-[#282828] sm:max-w-full lg:max-w-[480px]">
             <!-- Content Section -->
@@ -161,36 +188,7 @@
                 </button>
             </div>
         </div>
-        <!-- Header -->
-
-        <div class="header">
-            <img src="logo/02_accessbar-logo.png">
-            <div class="header-actions">
-                <div class="icon-button">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- SVG Path -->
-                    </svg>
-                </div>
-                <div class="separator"></div>
-                <div class="icon-button">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- SVG Path -->
-                    </svg>
-                </div>
-                <div class="icon-button">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- SVG Path -->
-                    </svg>
-                </div>
-                <div class="icon-button">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- SVG Path -->
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-
+    
 
 
     </div>
