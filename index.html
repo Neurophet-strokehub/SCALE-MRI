@@ -41,6 +41,37 @@
         </div>
     </div>
 
-     
+    <script>
+        function handleAuthentication() {
+            const usernameInput = document.getElementById('usernameInput');
+            const passwordInput = document.getElementById('passwordInput');
+            const errorMessage = document.getElementById('errorMessage');
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (username === 'mkt' && password === 'mkt') {
+                // Redirect to html/prototype.html
+                window.location.href = 'html/prototype.html';
+            } else {
+                // Show error message
+                errorMessage.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('startButton').addEventListener('click', handleAuthentication);
+        document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission
+                handleAuthentication();
+            }
+        });
+        document.getElementById('usernameInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent default form submission
+                handleAuthentication();
+            }
+        });
+    </script>
 </body>
 </html>
