@@ -1,139 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  	<meta charset="utf-8">
-  	<meta name="viewport" content="initial-scale=1, width=device-width">
-  	
-  	<link rel="stylesheet"  href="./index.css" />
-<style>
-	.vector-icon {
-  	width: 223.7px;
-  	position: relative;
-  	height: 30px;
-}
-.product-logo {
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: flex-start;
-}
-.icon-settings {
-  	width: 24px;
-  	position: relative;
-  	height: 24px;
-  	overflow: hidden;
-  	flex-shrink: 0;
-}
-.dropdownbuttonl {
-  	width: 44px;
-  	border-radius: 3px;
-  	height: 48px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 15px;
-  	box-sizing: border-box;
-}
-.dropdownbuttonl-wrapper {
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: flex-end;
-}
-.divaderd {
-  	width: 1px;
-  	background-color: rgba(255, 255, 255, 0.2);
-  	height: 18px;
-}
-.icon-windowminimize {
-  	width: 16px;
-  	position: relative;
-  	height: 16px;
-  	overflow: hidden;
-  	flex-shrink: 0;
-}
-.buttond {
-  	border-radius: 3px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: flex-start;
-  	justify-content: flex-start;
-  	padding: 4px;
-}
-.icon-closesmall {
-  	width: 16px;
-  	position: relative;
-  	height: 16px;
-}
-.divaderd-parent {
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: flex-end;
-  	gap: 16px;
-}
-.frame-parent {
-  	height: 48px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: flex-end;
-  	gap: 16px;
-}
-.accessbard {
-  	width: 100%;
-  	position: relative;
-  	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-  	background-color: #383838;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: space-between;
-  	padding: 0px 20px;
-  	box-sizing: border-box;
-}
-
-
-</style>  	
-  	
-  	
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SCALE MRA PROTOTYPE</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		html,
+		body {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: #383838;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.20);
+		}
+	</style>
 </head>
+
 <body>
-  	
-  	<div class="accessbard">
-    		<div class="product-logo">
-      			<img class="vector-icon" alt="" src="logo\02_accessbar-logo.png">
-      			
-    		</div>
-    		<div class="frame-parent">
-      			<div class="dropdownbuttonl-wrapper">
-        				<div class="dropdownbuttonl">
-          					<img class="icon-settings" alt="" src="icon_Settings.svg">
-          					
-        				</div>
-      			</div>
-      			<div class="divaderd-parent">
-        				<div class="divaderd">
-        				</div>
-        				<div class="buttond">
-          					<img class="icon-windowminimize" alt="" src="icon_WindowMinimize.svg">
-          					
-        				</div>
-        				<div class="buttond">
-          					<img class="icon-windowminimize" alt="" src="icon_WindowRestore.svg">
-          					
-        				</div>
-        				<div class="buttond">
-          					<img class="icon-closesmall" alt="" src="icon_CloseSmall.svg">
-          					
-        				</div>
-      			</div>
-    		</div>
-  	</div>
-  	
-  	
-  	
-  	
+	<div class="w-full flex justify-between items-center bg-[#383838] px-5">
+		<!-- Logo or main icon -->
+		<div class="flex items-center gap-1" style="padding-left: 1rem;">
+			<img src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo">
+
+		</div>
+
+		<!-- Header right section -->
+		<div class="h-12 flex justify-end items-center gap-4">
+			<!-- Button 1 -->
+			<div class="w-6 h-6">
+				<img src="/logo/02_accessbar-setting.png" alt="Product Logo">
+			</div>
+
+			<!-- Divider -->
+			<div class="h-4 w-px bg-white"></div>
+
+			<!-- Minimize Button -->
+			<button class="w-8 h-8 flex justify-center items-center p-1 rounded-sm ">
+				<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
+				</svg>
+			</button>
+
+			<!-- Maximize Button -->
+			<button id="maximizeBtn"
+				class="w-8 h-8 flex justify-center items-center p-1 rounded-sm  hidden">
+				<svg id="maximizeIcon" class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg">
+					<rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
+				</svg>
+			</button>
+
+			<!-- Restore Button -->
+			<button class="w-8 h-8 flex justify-center items-center p-1 rounded-sm ">
+				<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg">
+					<rect x="3" y="3" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"></rect>
+					<rect x="13" y="13" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none"></rect>
+				</svg>
+			</button>
+
+
+			<!-- Button 4 -->
+			<button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm ">
+				<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+					</path>
+				</svg>
+			</button>
+		</div>
+	</div>
+	<script>
+		const minimizeBtn = document.getElementById('minimizeBtn');
+		const maximizeBtn = document.getElementById('maximizeBtn');
+		const maximizeIcon = document.getElementById('maximizeIcon');
+		const minimizeIcon = document.getElementById('minimizeIcon');
+
+		// Initial state
+		let isMaximized = false;
+
+		function toggleButtons() {
+			if (isMaximized) {
+				minimizeBtn.classList.remove('hidden');
+				maximizeBtn.classList.add('hidden');
+			} else {
+				minimizeBtn.classList.add('hidden');
+				maximizeBtn.classList.remove('hidden');
+			}
+		}
+
+		minimizeBtn.addEventListener('click', () => {
+			isMaximized = !isMaximized;
+			toggleButtons();
+		});
+
+		maximizeBtn.addEventListener('click', () => {
+			isMaximized = !isMaximized;
+			toggleButtons();
+		});
+
+		// Initial setup
+		toggleButtons();
+	</script>
 </body>
+
 </html>
