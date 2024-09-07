@@ -1,9 +1,8 @@
-// index.js
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Heroku에서 포트 번호를 환경 변수로 제공합니다.
 
 app.use(bodyParser.json());
 

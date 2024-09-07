@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCALE MRA PROTOTYPE</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/heroicons@1.0.6/umd/heroicons.min.js"></script>
     <style>
         html, body {
             min-height: 100vh;
@@ -17,11 +18,14 @@
 <body class="bg-[#282828] flex items-center justify-center">
     <div class="bg-[#383838] p-6 sm:p-12 rounded border border-white/20 max-w-[456px] w-full">
         <div class="mb-4 text-center">
-            <img src="src/img/Product Logo.png" class="w-full h-auto" alt="Product Logo">
+            <img src="logo\Product Logo-SCALE MRI.png" class="w-full h-auto" alt="Product Logo">
         </div>
         <div class="mb-6">
             <div class="flex items-center bg-[#1e1e1e] border border-white/30 rounded-sm px-3 mb-4">
-                <img src="src/img/password.png" alt="Password input field icon" class="mr-2">
+                <!-- Heroicons Lock Icon -->
+                <svg class="w-5 h-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16a2 2 0 002-2v-2a2 2 0 00-2-2 2 2 0 00-2 2v2a2 2 0 002 2zM6 9v3a4 4 0 008 0V9a4 4 0 00-8 0z" />
+                </svg>
                 <input type="password" id="passwordInput" placeholder="Enter password" class="flex-grow w-full h-8 px-2 text-sm text-white bg-[#1e1e1e] rounded-sm outline-none">
             </div>
             <div id="startButton" class="bg-[#1077fe] rounded-[3px] cursor-pointer text-lg text-white py-3 px-4 text-center">
@@ -35,14 +39,26 @@
     </div>
 
     <script>
-        function handleAuthentication() {
+        async function handleAuthentication() {
             const passwordInput = document.getElementById('passwordInput');
             const errorMessage = document.getElementById('errorMessage');
-            const correctPassword = 'ksin';
             
-            if (passwordInput.value === correctPassword) {
-                window.location.href = 'prototype.html';
-            } else {
+            try {
+                const response = await fetch('/authenticate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ password: passwordInput.value })
+                });
+
+                if (response.ok) {
+                    window.location.href = 'prototype.html';
+                } else {
+                    errorMessage.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error during authentication:', error);
                 errorMessage.classList.remove('hidden');
             }
         }
