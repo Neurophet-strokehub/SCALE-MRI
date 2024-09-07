@@ -1,76 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SCALE MRA PROTOTYPE</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        html, body {
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Spoqa Han San', sans-serif;
-            overflow-x: hidden; /* Hide horizontal scrollbar */
-        }  
-        /* Additional styles for logo */
-        .logo-img {
-            max-width: 250px; /* Adjust max-width as needed */
-            height: auto;     /* Maintain aspect ratio */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="flex flex-col justify-center items-center w-full h-full absolute left-0 top-0 overflow-hidden bg-[#282828]">
-            <div class="flex flex-col justify-center items-center max-w-full sm:max-w-[456px] gap-5 p-6 sm:p-12 rounded bg-[#383838] border border-white/20">
-                <!-- logo img -->
-                <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 mb-4">
-                    <img src="logo\01_login-logo-SCALEMRI.png" alt="Product Logo" class="logo-img">
-                </div>
-                <!-- password ~ description -->
-                <div class="flex flex-col justify-center items-center gap-6">
-                    <!-- password -->
-                    <div class="flex items-center self-stretch h-10 bg-[#1e1e1e] border border-white/30 rounded-sm px-3 overflow-hidden">
-                        <img src="logo\01_login-pw.png" alt="Password input field icon" class="mr-2" />
-                        <input type="password" id="passwordInput" placeholder="Enter password" class="flex-grow w-full h-8 px-2 text-sm text-white bg-[#1e1e1e] rounded-sm outline-none" />
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SCALE MRA PROTOTYPE</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            html, body {
+                min-height: 100vh;
+                margin: 0;
+                font-family: 'Spoqa Han San', sans-serif;
+                overflow-x: hidden; /* Hide horizontal scrollbar */
+            }  
+            /* Additional styles for logo */
+            .logo-img {
+                max-width: 250px; /* Adjust max-width as needed */
+                height: auto;     /* Maintain aspect ratio */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="flex flex-col justify-center items-center w-full h-full absolute left-0 top-0 overflow-hidden bg-[#282828]">
+                <div class="flex flex-col justify-center items-center max-w-full sm:max-w-[456px] gap-5 p-6 sm:p-12 rounded bg-[#383838] border border-white/20">
+                    <!-- logo img -->
+                    <div class="flex justify-center items-center flex-grow-0 flex-shrink-0 mb-4">
+                        <img src="logo\01_login-logo-SCALEMRI.png" alt="Product Logo" class="logo-img">
                     </div>
-                    <div id="startButton" class="flex justify-center items-center w-full h-12 bg-[#1077fe] rounded-[3px] cursor-pointer px-4 py-3">
-                        <p class="text-lg text-white">Start</p>
-                    </div>
-                    <p id="errorMessage" class="text-red-500 text-sm hidden">Incorrect password. Please try again.</p>
-                    <div class="flex flex-col justify-center items-center gap-3">
-                        <div class="w-full h-px bg-white/20"></div>
-                        <div class="flex flex-col items-center gap-3">
-                            <p class="text-sm text-white/60"> Do not share the password with any other authorized persons. </p>
-                            <p class="text-sm text-white/60"> If you forget your password, contact a service representative. </p>
+                    <!-- password ~ description -->
+                    <div class="flex flex-col justify-center items-center gap-6">
+                        <!-- password -->
+                        <div class="flex items-center self-stretch h-10 bg-[#1e1e1e] border border-white/30 rounded-sm px-3 overflow-hidden">
+                            <img src="logo\01_login-pw.png" alt="Password input field icon" class="mr-2" />
+                            <input type="password" id="passwordInput" placeholder="Enter password" class="flex-grow w-full h-8 px-2 text-sm text-white bg-[#1e1e1e] rounded-sm outline-none" />
+                        </div>
+                        <div id="startButton" class="flex justify-center items-center w-full h-12 bg-[#1077fe] rounded-[3px] cursor-pointer px-4 py-3">
+                            <p class="text-lg text-white">Start</p>
+                        </div>
+                        <p id="errorMessage" class="text-red-500 text-sm hidden">Incorrect password. Please try again.</p>
+                        <div class="flex flex-col justify-center items-center gap-3">
+                            <div class="w-full h-px bg-white/20"></div>
+                            <div class="flex flex-col items-center gap-3">
+                                <p class="text-sm text-white/60">데모, 홍보, 마케팅, 자문 등의 목적을 위해 제작한 시연용 프로토타입 제품으로, 제품의 실제 기능과 상이할</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        function handleAuthentication() {
-            const passwordInput = document.getElementById('passwordInput');
-            const errorMessage = document.getElementById('errorMessage');
-            const correctPassword = 'ksin';
-            
-            if (passwordInput.value === correctPassword) {
-                window.location.href = 'prototype.html';
-            } else {
-                errorMessage.classList.remove('hidden');
+        <script>
+            function handleAuthentication() {
+                const passwordInput = document.getElementById('passwordInput');
+                const errorMessage = document.getElementById('errorMessage');
+                const correctPassword = '4029';
+                sss
+                if (passwordInput.value === correctPassword) {
+                    window.location.href = 'prototype.html';
+                } else {
+                    errorMessage.classList.remove('hidden');
+                }
             }
-        }
 
-        document.getElementById('startButton').addEventListener('click', handleAuthentication);
+            document.getElementById('startButton').addEventListener('click', handleAuthentication);
 
-        document.getElementById('passwordInput').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // Prevents default form submission behavior
-                handleAuthentication();
-            }
-        });  
-    </script>
-</body>
+            document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevents default form submission behavior
+                    handleAuthentication();
+                }
+            });  
+        </script>
+    </body>
 
-</html>
+    </html>
