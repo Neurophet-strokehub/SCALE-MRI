@@ -1,0 +1,87 @@
+/* 공통 텍스트 스타일 */
+.scalemri-body .text-base {
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
+    line-height: 19.60px;
+    word-wrap: break-word;
+}
+
+.scalemri-body .text-large {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22.40px;
+}
+
+.scalemri-body .text-medium {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.scalemri-body .text-small {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.scalemri-body .text-xlarge {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+/* 색상 스타일 */
+.scalemri-body .text-white {
+    color: white;
+}
+
+.scalemri-body .text-light {
+    color: rgba(255, 255, 255, 0.90);
+}
+
+.scalemri-body .text-lightest {
+    color: rgba(255, 255, 255, 0.60);
+}
+
+.scalemri-body .text-disabled {
+    color: rgba(255, 255, 255, 0.20);
+}
+
+/* 특정 텍스트 스타일 */
+.scalemri-body .run-analysis {
+    @apply text-xlarge text-white;
+}
+
+.scalemri-body .run-analysis-description {
+    @apply text-medium text-white;
+}
+
+.scalemri-body .select-images {
+    @apply text-large text-white;
+}
+
+.scalemri-body .use-swi-phase,
+.scalemri-body .dicom,
+.scalemri-body .nifti {
+    @apply text-medium text-light;
+}
+
+.scalemri-body .swi,
+.scalemri-body .phase {
+    @apply text-medium text-white;
+}
+
+.scalemri-body .select-file {
+    @apply text-medium text-lightest;
+}
+
+.scalemri-body .mri-scanner-type {
+    @apply text-large text-white;
+}
+
+.scalemri-body .left-handed,
+.scalemri-body .right-handed {
+    @apply text-medium text-light;
+}
+
+.scalemri-body .reset,
+.scalemri-body .run {
+    @apply text-medium text-disabled;
+}
