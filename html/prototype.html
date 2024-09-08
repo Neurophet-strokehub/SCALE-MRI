@@ -142,6 +142,17 @@
         radioScannerButtons.forEach(radio => {
             radio.addEventListener('change', checkRadioButtons);
         });
+
+		document.getElementById('logo').addEventListener('click', function() {
+        window.location.reload();
+    });
+
+    const resetButton = document.getElementById('reset-button');
+
+    resetButton.addEventListener('click', function() {
+        // Reload the page to mimic the F5 effect
+        window.location.reload();
+    });
     </script>
 </body>
 </html>
