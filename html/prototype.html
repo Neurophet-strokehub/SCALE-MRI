@@ -12,11 +12,18 @@
         .radio-group {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap; /* Ensure it wraps on smaller screens */
         }
         .radio-container {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+        /* Increase radio button size */
+        .radio-container input[type="radio"] {
+            width: 1rem;
+            height: 1.3rem;
+            accent-color: #1077fe; /* Optional: change radio button color */
         }
     </style>
 </head>
@@ -80,12 +87,12 @@
                             <p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
                             <div class="radio-group">
                                 <label class="radio-container">
-                                    <input type="radio" checked name="radio-image">                                    <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
-
+                                    <input type="radio" name="radio-image">
+                                    <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
                                 </label>
                                 <label class="radio-container">
-                                    <input type="radio" name="radio-image">                                    <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
-
+                                    <input type="radio" name="radio-image">
+                                    <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
                                 </label>
                             </div>
                             <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
@@ -115,13 +122,13 @@
                             <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
                             <div class="radio-group">
                                 <label class="radio-container">
-                                    <input type="radio" checked name="radio-scanner">
-									<p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
-								</label>
+                                    <input type="radio" name="radio-scanner">
+                                    <p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
+                                </label>
                                 <label class="radio-container">
                                     <input type="radio" name="radio-scanner">
-									<p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
-								</label>
+                                    <p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -134,6 +141,9 @@
             </div>
         </div>
     </div>
+
+    <
+
 
     <script>
         document.getElementById('logo').addEventListener('click', function() {
