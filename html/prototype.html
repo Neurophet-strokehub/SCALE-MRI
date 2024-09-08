@@ -110,7 +110,7 @@
 
             <!-- Buttons -->
             <div class="flex justify-end gap-4 w-full mt-6">
-                <button id="reset-button" class="w-[120px] px-5 py-3 rounded-[3px] border border-white/10 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-white/10 transition-colors duration-200">Reset</button>
+                <button id="reset-button" class="w-[120px] px-5 py-3 rounded-[3px] border border-white/10 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-white/10 transition-colors duration-200" disabled>Reset</button>
                 <button class="w-[120px] px-5 py-3 rounded-[3px] bg-[#1077fe]/20 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-[#1077fe]/30 active:bg-[#1077fe]/40 transition-colors duration-200">Run</button>
             </div>
         </div>
@@ -122,21 +122,26 @@
         });
 
         const resetButton = document.getElementById('reset-button');
-        const radioButtons = document.querySelectorAll('input[name="radio-image"]');
+        const radioImageButtons = document.querySelectorAll('input[name="radio-image"]');
+        const radioScannerButtons = document.querySelectorAll('input[name="radio-scanner"]');
 
         function checkRadioButtons() {
-            const isChecked = Array.from(radioButtons).some(radio => radio.checked);
-            resetButton.disabled = !isChecked;
-            resetButton.classList.toggle('text-white/20', !isChecked); // Make button look inactive
-            resetButton.classList.toggle('text-white', isChecked); // Make button look active
+            const imageChecked = Array.from(radioImageButtons).some(radio => radio.checked);
+            const scannerChecked = Array.from(radioScannerButtons).some(radio => radio.checked);
+            const isAnyChecked = imageChecked || scannerChecked;
+
+            resetButton.disabled = !isAnyChecked;
+            resetButton.classList.toggle('text-white/20', !isAnyChecked); // Make button look inactive
+            resetButton.classList.toggle('text-white', isAnyChecked); // Make button look active
         }
 
-        radioButtons.forEach(radio => {
+        radioImageButtons.forEach(radio => {
             radio.addEventListener('change', checkRadioButtons);
         });
 
-        // Initial check in case a radio button is pre-selected
-        checkRadioButtons();
+        radioScannerButtons.forEach(radio => {
+            radio.addEventListener('change', checkRadioButtons);
+        });
     </script>
-  </body>
+</body>
 </html>
