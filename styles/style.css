@@ -1,144 +1,43 @@
-html,
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Spoqa Han Sans Neo', sans-serif;
-    width: 100%;
-    height: 100%;
-} /* Container for file info */
-.file-info-container {
-    background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
-    padding: 0.75rem 1rem; /* px-4 py-3 */
-    border-radius: 0.25rem; /* rounded-[3px] */
-    width: 100%; /* Full width of its parent */
-}
-
-/* Content inside the container */
-.file-info-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* gap-4 */
-    height: 45px; /* h-[45px] */
-}
-
-/* SWI button styles */
-.swi-button, .phase-button {
-    width: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem; /* gap-2 */
-    padding: 0.5rem 0.75rem; /* px-3 py-2 */
-    border-radius: 0.25rem; /* rounded-[3px] */
-    background-color: rgba(255, 255, 255, 0.30); /* bg-white/30 */
-    transition: background-color 0.2s; /* transition-colors duration-200 */
-}
-
-.swi-button:hover, .phase-button:hover {
-    background-color: rgba(255, 255, 255, 0.50); /* bg-white/50 */
-}
-
-.swi-button-text, .phase-button-text {
-    font-size: 0.875rem; /* text-sm */
-    font-weight: bold; /* font-bold */
-    color: #ffffff; /* text-white */
-}
-
-/* File info display */
-.swi-file-info, .phase-file-info {
-    font-size: 0.875rem; /* text-sm */
-    color: rgba(255, 255, 255, 0.60); /* text-white/60 */
-}
-
-/* Remove button */
-.remove-swi-button, .remove-phase-button {
-    width: 24px; /* w-6 */
-    height: 24px; /* h-6 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.20); /* bg-white/20 */
-    border-radius: 0.25rem; /* rounded-[3px] */
-    cursor: pointer;
-    color: #ffffff; /* text-white */
-    border: none;
-}
-
-.remove-swi-button:hover, .remove-phase-button:hover {
-    background-color: rgba(255, 255, 255, 0.30); /* bg-white/30 */
-}
-
-/* Reset Button Styles */
-.reset-button {
-  display: flex;
-  padding: 10px 16px; /* Padding */
-  justify-content: center;
-  align-items: center;
-  gap: 6px; /* Space between icon and text */
-  border-radius: 3px; /* Rounded corners */
-  border: 1px solid rgba(255, 255, 255, 0.20); /* Border color */
-  background-color: #4a4a4a; /* Dark gray background */
-  color: #ffffff; /* White text */
-  font-size: 0.875rem; /* Text size */
-  font-weight: bold; /* Bold text */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.2s, opacity 0.2s; /* Smooth transitions */
-}
-
-.reset-button:hover {
-  background-color: #6c6c6c; /* Slightly lighter gray on hover */
-}
-
-.reset-button:disabled {
-  background-color: #2d2d2d; /* Darker gray when disabled */
-  cursor: default; /* Default cursor when disabled */
-  opacity: 0.5; /* Semi-transparent */
-}
-
-
-
-
-.run-button {
-    background-color: rgba(0, 255, 0, 0.50); /* bg-green-500/50 */
-    color: #ffffff; /* text-white */
-    padding: 0.5rem 1rem; /* px-4 py-2 */
-    border-radius: 0.25rem; /* rounded-[3px] */
-    border: none;
-    cursor: pointer;
-}
-
-/* Radio button styles */
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; /* gap-2 */
-}
-
-.radio-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* gap-2 */
-}
-
-.radio-container input[type="radio"] {
-    accent-color: #003cff; /* text-white */
-}
-
-/* Header Styles */
-.header {
-    position: relative;
-}
-
-/* Header button icons */
-/* Icon Styles */
-.icon-disabled {
-  filter: grayscale(100%); /* Makes icon grayscale */
-  opacity: 0.5; /* Makes icon semi-transparent */
-  cursor: not-allowed; /* Indicates that the icon is not clickable */
-}
-
-.icon-enabled {
-  filter: none; /* Normal icon color */
-  opacity: 1; /* Fully opaque */
-  cursor: pointer; /* Indicates that the icon is clickable */
-}
+ 
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-box {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            user-select: none;
+        }
+        .radio-box input {
+            display: none;
+        }
+        .radio-box .radio-icon {
+            font-size: 16px;
+            color: #ccc;
+            margin-right: 8px;
+        }
+        .radio-box input:checked + .radio-icon {
+            color: #1077FE;
+        }
+        .radio-box input:checked + .radio-icon + .radio-icon-check {
+            display: inline;
+        }
+        .radio-box .radio-icon-check {
+            display: none;
+            font-size: 16px;
+            color: #1077FE;
+        }
+        .radio-box span {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+        }
+        .radio-box:hover .radio-icon {
+            color: #1077FE;
+        }
+        .radio-box.disabled {
+            cursor: not-allowed;
+            color: rgba(255, 255, 255, 0.5);
+        } 

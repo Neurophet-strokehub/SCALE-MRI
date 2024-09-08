@@ -3,90 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folder Viewer</title>
-    <style>
-        body {
-            background-color: #282828;
-            color: white;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        .folder, .file {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #333;
-            cursor: pointer;
-        }
-        .folder:hover, .file:hover {
-            background-color: #444;
-        }
-        .file {
-            margin-left: 20px;
-        }
-        .folder-contents {
-            margin-left: 20px;
-        }
-        #folder-info {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-
-    <h1>View Folder Contents</h1>
-
-    <input type="file" id="folder-input" webkitdirectory mozdirectory msdirectory odirectory directory>
-    <div id="folder-info"></div>
-
-    <script>
-        document.getElementById('folder-input').addEventListener('change', function(event) {
-            const files = event.target.files;
-            const folderInfo = document.getElementById('folder-info');
-            folderInfo.innerHTML = ''; // Clear previous content
-
-            const folderMap = {};
-
-            Array.from(files).forEach(file => {
-                const pathParts = file.webkitRelativePath.split('/');
-                let currentFolder = folderMap;
-
-                pathParts.forEach((part, index) => {
-                    if (!currentFolder[part]) {
-                        currentFolder[part] = index < pathParts.length - 1 ? {} : file;
-                    }
-                    currentFolder = currentFolder[part];
-                });
-            });
-
-            function displayFolderStructure(container, folder) {
-                Object.keys(folder).forEach(name => {
-                    const item = folder[name];
-                    const itemDiv = document.createElement('div');
-                    
-                    if (typeof item === 'object') {
-                        // Folder
-                        itemDiv.className = 'folder';
-                        itemDiv.textContent = name;
-                        itemDiv.onclick = function() {
-                            const subContainer = document.createElement('div');
-                            subContainer.className = 'folder-contents';
-                            displayFolderStructure(subContainer, item);
-                            itemDiv.appendChild(subContainer);
-                        };
-                    } else {
-                        // File
-                        itemDiv.className = 'file';
-                        itemDiv.textContent = name;
-                    }
-                    
-                    container.appendChild(itemDiv);
-                });
-            }
-
-            displayFolderStructure(folderInfo, folderMap);
-        });
-    </script>
-
+    <div class="header">
+        <!-- Logo or main icon -->
+        <div class="flex items-center gap-1 pl-4">
+            <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
+        </div>
+        <!-- Header right section -->
+        <div class="h-12 flex justify-end items-center gap-3">
+            <!-- Buttons and Icons -->
+            <div class="w-6 h-6 flex justify-center items-center cursor-not-allowed">
+                <img src="/logo/02_accessbar-setting.png" alt="Accessbar Setting" class="w-6 h-6">
+            </div>
+            <div class="h-4 w-px bg-white"></div>
+            <button class="w-6 h-6 flex justify-center items-center p-1 cursor-not-allowed" aria-label="Menu">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
+                </svg>
+            </button>
+            <button class="w-6 h-6 flex justify-center items-center p-1 cursor-not-allowed" aria-label="Maximize">
+                <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                    </rect>
+                </svg>
+            </button>
+            <button class="w-6 h-6 flex justify-center items-center p-1 cursor-not-allowed" aria-label="Close">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </div>
 </body>
+</html>
+
+
+
+
+<!-- dsadsad -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Preview</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		html,
+		body {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			width: 100%;
+			height: 100%;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="width: 1920px; height: 1020px; position: relative; overflow: hidden; background: #282828;">
+		<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; position: absolute; left: 720px; top: 48px; overflow: hidden; gap: 40px; padding-top: 40px; background: #282828;">
+			<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; gap: 20px;">
+				<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; align-self: stretch; flex-grow: 0; flex-shrink: 0; position: relative; gap: 16px;">
+					<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; align-self: stretch; flex-grow: 0; flex-shrink: 0; position: relative; gap: 16px;">
+						<p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 480px; font-size: 20px; font-weight: 700; text-align: left; color: #fff;"> Run Analysis </p>
+						<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; align-self: stretch; flex-grow: 0; flex-shrink: 0; position: relative; gap: 6px;">
+							<p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 480px; font-size: 14px; text-align: left; color: #fff;"> Run analysis to detect cerebral microbleeds. </p>
+						</div>
+					</div>
+					<div style="flex-grow: 0; flex-shrink: 0; width: 480px; height: 1px; background: rgba(255,255,255,0.2);"></div>
+				</div>
+				<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; align-self: stretch; flex-grow: 0; flex-shrink: 0; gap: 20px;">
+					<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; gap: 16px;">
+						<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; width: 480px; position: relative; gap: 8px;">
+							<p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 480px; font-size: 16px; font-weight: 700; text-align: left; color: #fff;"> Select Images </p>
+							<p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 480px; font-size: 14px; text-align: left; color: rgba(255,255,255,0.9);"> Use SWI and Phase images. </p>
+						</div>
+						<div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; gap: 24px;">
+							<div style="display: flex; justify-content: flex-start; align-items: center; flex-grow: 0; flex-shrink: 0; position: relative; gap: 8px;">
+								<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 16px; height: 16px; position: relative;" preserveAspectRatio="xMidYMid meet">
+									<g clip-path="url(#clip0_51_158)">
+										<path d="M11 8C11 9.65685 9.65685 11 8 11C6.34315 11 5 9.65685 5 8C5 6.34315 6.34315 5 8 5C9.65685 5 11 6.34315 11 8Z" fill="white"></path>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M8 15.5C12.1421 15.5 15.5 12.1421 15.5 8C15.5 3.85786 12.1421 0.5 8 0.5C3.85786 0.5 0.5 3.85786 0.5 8C0.5 12.1421 3.85786 15.5 8 15.5ZM8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z" fill="#1077FE"></path>
+									</g>
+									<defs>
+										<clipPath id="clip0_51_158">
+											<rect width="16" height="16" fill="white"></rect>
+										</clipPath>
+									</defs>
+								</svg>
+								<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; text-align: left; color: rgba(255,255,255,0.9);"> DICOM </p>
+							</div>
+							<div style="display: flex; justify-content: flex-start; align-items: center; flex-grow: 0; flex-shrink: 0; position: relative; gap: 8px;">
+								<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 16px; height: 16px; position: relative;" preserveAspectRatio="xMidYMid meet">
+									<g clip-path="url(#clip0_51_163)">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5ZM15.5 8C15.5 12.1421 12.1421 15.5 8 15.5C3.85786 15.5 0.5 12.1421 0.5 8C0.5 3.85786 3.85786 0.5 8 0.5C12.1421 0.5 15.5 3.85786 15.5 8Z" fill="white" fill-opacity="0.4"></path>
+									</g>
+									<defs>
+										<clipPath id="clip0_51_163">
+											<rect width="16" height="16" fill="white"></rect>
+										</clipPath>
+									</defs>
+								</svg>
+								<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; text-align: left; color: rgba(255,255,255,0.9);"> NIfTI </p>
+							</div>
+						</div>
+						<div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; flex-grow: 0; flex-shrink: 0; width: 480px; gap: 10px; padding-left: 14px; padding-right: 14px; padding-top: 10px; padding-bottom: 10px; background: rgba(255,255,255,0.05);">
+							<div style="display: flex; justify-content: flex-start; align-items: center; align-self: stretch; flex-grow: 0; flex-shrink: 0; height: 39px; position: relative; gap: 14px;">
+								<div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 158px; position: relative; gap: 6px; padding-left: 10px; padding-right: 10px; padding-top: 6px; padding-bottom: 6px; border-radius: 3px; background: rgba(255,255,255,0.3);">
+									<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; font-weight: 500; text-align: center; color: #fff;"> SWI </p>
+								</div>
+								<p style="flex-grow: 1; width: 280px; font-size: 14px; text-align: left; color: rgba(255,255,255,0.6);"> Select the image file or folder </p>
+							</div>
+						</div>
+						<div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; flex-grow: 0; flex-shrink: 0; width: 480px; gap: 10px; padding-left: 14px; padding-right: 14px; padding-top: 10px; padding-bottom: 10px; background: rgba(255,255,255,0.05);">
+							<div style="display: flex; justify-content: flex-start; align-items: center; align-self: stretch; flex-grow: 0; flex-shrink: 0; height: 39px; position: relative; gap: 14px;">
+								<div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 158px; position: relative; gap: 6px; padding-left: 10px; padding-right: 10px; padding-top: 6px; padding-bottom: 6px; border-radius: 3px; background: rgba(255,255,255,0.3);">
+									<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; font-weight: 500; text-align: center; color: #fff;"> Phase </p>
+								</div>
+								<p style="flex-grow: 1; width: 280px; font-size: 14px; text-align: left; color: rgba(255,255,255,0.6);"> Select the image file or folder </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; position: relative; gap: 20px;">
+					<div style="flex-grow: 0; flex-shrink: 0; width: 480px; height: 1px; background: rgba(255,255,255,0.2);"></div>
+					<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; gap: 16px;">
+						<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; position: relative; gap: 16px;">
+							<p style="flex-grow: 0; flex-shrink: 0; width: 480px; font-size: 16px; font-weight: 700; text-align: left; color: #fff;"> MRI Scanner Type </p>
+							<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; width: 480px; gap: 8px;">
+								<div style="display: flex; justify-content: flex-start; align-items: flex-start; align-self: stretch; flex-grow: 0; flex-shrink: 0; gap: 24px;">
+									<div style="display: flex; justify-content: flex-start; align-items: center; flex-grow: 0; flex-shrink: 0; position: relative; gap: 8px;">
+										<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 16px; height: 16px; position: relative;" preserveAspectRatio="xMidYMid meet">
+											<g clip-path="url(#clip0_51_184)">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5ZM15.5 8C15.5 12.1421 12.1421 15.5 8 15.5C3.85786 15.5 0.5 12.1421 0.5 8C0.5 3.85786 3.85786 0.5 8 0.5C12.1421 0.5 15.5 3.85786 15.5 8Z" fill="white" fill-opacity="0.4"></path>
+											</g>
+											<defs>
+												<clipPath id="clip0_51_184">
+													<rect width="16" height="16" fill="white"></rect>
+												</clipPath>
+											</defs>
+										</svg>
+										<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; text-align: left; color: rgba(255,255,255,0.9);"> Left-handed </p>
+									</div>
+									<div style="display: flex; justify-content: flex-start; align-items: center; flex-grow: 0; flex-shrink: 0; position: relative; gap: 8px;">
+										<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 16px; height: 16px; position: relative;" preserveAspectRatio="xMidYMid meet">
+											<g clip-path="url(#clip0_51_188)">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5ZM15.5 8C15.5 12.1421 12.1421 15.5 8 15.5C3.85786 15.5 0.5 12.1421 0.5 8C0.5 3.85786 3.85786 0.5 8 0.5C12.1421 0.5 15.5 3.85786 15.5 8Z" fill="white" fill-opacity="0.4"></path>
+											</g>
+											<defs>
+												<clipPath id="clip0_51_188">
+													<rect width="16" height="16" fill="white"></rect>
+												</clipPath>
+											</defs>
+										</svg>
+										<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; text-align: left; color: rgba(255,255,255,0.9);"> Right-handed </p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="display: flex; justify-content: flex-end; align-items: flex-start; flex-grow: 0; flex-shrink: 0; width: 480px; gap: 16px;">
+				<div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 100px; position: relative; gap: 6px; padding-left: 16px; padding-right: 16px; padding-top: 10px; padding-bottom: 10px; border-radius: 3px; border-width: 1px; border-color: rgba(255,255,255,0.1);">
+					<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; font-weight: 500; text-align: center; color: rgba(255,255,255,0.2);"> Reset </p>
+				</div>
+				<div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 100px; position: relative; gap: 6px; padding-left: 16px; padding-right: 16px; padding-top: 10px; padding-bottom: 10px; border-radius: 3px; background: rgba(16,119,254,0.2);">
+					<p style="flex-grow: 0; flex-shrink: 0; font-size: 14px; font-weight: 500; text-align: center; color: rgba(255,255,255,0.2);"> Run </p>
+				</div>
+			</div>
+		</div>
+		<div style="display: flex; justify-content: space-between; align-items: center; width: 1920px; position: absolute; left: 0px; top: 0px; padding-left: 19.999998092651367px; padding-right: 19.999998092651367px; background: #383838; box-shadow: 0px 2px 6px 0 rgba(0,0,0,0.2);">
+			<div style="display: flex; justify-content: flex-start; align-items: center; flex-grow: 0; flex-shrink: 0; position: relative; gap: 4px;">
+				<svg width="224" height="24" viewBox="0 0 224 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0;" preserveAspectRatio="none">
+					<path d="M22.977 0C19.2422 0 15.8322 2.24 14.3708 5.6L6.41412 24H109.526L120 0H22.977Z" fill="#6038CC"></path>
+					<path d="M10.4736 0H22.977C22.8519 0 22.7293 0.00242591 22.6092 0.00724459C19.0198 0.148714 15.7841 2.35063 14.3708 5.6L6.41412 24H0L10.4736 0Z" fill="#9375FF"></path>
+					<path d="M27.3613 7.19999C25.088 7.19999 23.3018 8.95999 23.3018 11.2V17.04H24.9256V11.2C24.9256 9.83999 25.9811 8.79999 27.3613 8.79999C28.7415 8.79999 29.797 9.83999 29.797 11.2V17.04H31.4208V11.2C31.4208 9.03999 29.5534 7.19999 27.3613 7.19999Z" fill="white"></path>
+					<path d="M53.0176 11.2V17.04H54.6414V11.2C54.6414 9.83999 55.6969 8.79999 57.0771 8.79999H57.889V7.19999H57.0771C54.8038 7.19999 53.0176 9.03999 53.0176 11.2Z" fill="white"></path>
+					<path d="M49.2828 13.04C49.2828 14.4 48.2273 15.44 46.8471 15.44C45.4668 15.44 44.4114 14.4 44.4114 13.04V7.19999H42.7875V13.04C42.7875 15.28 44.5737 17.04 46.8471 17.04C49.1204 17.04 50.9066 15.28 50.9066 13.04V7.19999H49.2828V13.04Z" fill="white"></path>
+					<path d="M62.5981 7.19999C60.3248 7.19999 58.5386 8.95999 58.5386 11.2V13.04C58.5386 15.28 60.3248 17.04 62.5981 17.04C64.8715 17.04 66.6577 15.28 66.6577 13.04V11.2C66.7388 9.03999 64.8715 7.19999 62.5981 7.19999ZM65.0338 13.04C65.0338 14.4 63.9784 15.44 62.5981 15.44C61.2179 15.44 60.1624 14.4 60.1624 13.04V11.2C60.1624 9.83999 61.2179 8.79999 62.5981 8.79999C63.9784 8.79999 65.0338 9.83999 65.0338 11.2V13.04Z" fill="white"></path>
+					<path d="M37.1042 7.19999C34.8309 7.19999 33.0447 8.95999 33.0447 11.2V13.04C33.0447 15.28 34.8309 17.04 37.1042 17.04C39.3776 17.04 41.1638 15.28 41.1638 13.04H39.5399C39.5399 14.4 38.4845 15.44 37.1042 15.44C35.9675 15.44 34.9932 14.64 34.7497 13.6L41.1638 11.76V11.12C41.1638 9.03998 39.3776 7.19999 37.1042 7.19999ZM34.6685 12V11.2C34.6685 9.83999 35.724 8.79999 37.1042 8.79999C38.2409 8.79999 39.2151 9.6 39.4587 10.64L34.6685 12Z" fill="white"></path>
+					<path d="M92.1516 7.19999C89.8782 7.19999 88.092 8.95999 88.092 11.2V13.04C88.092 15.28 89.8782 17.04 92.1516 17.04C94.4249 17.04 96.2111 15.28 96.2111 13.04H94.5873C94.5873 14.4 93.5318 15.44 92.1516 15.44C91.0149 15.44 90.0406 14.64 89.797 13.6L96.2111 11.76V11.12C96.2111 9.03998 94.3437 7.19999 92.1516 7.19999ZM89.7159 12V11.2C89.7159 9.83999 90.7713 8.79999 92.1516 8.79999C93.2883 8.79999 94.2626 9.6 94.5061 10.64L89.7159 12Z" fill="white"></path>
+					<path d="M72.5846 7.19999C71.6915 7.19999 70.7984 7.51999 70.1489 7.99999V7.19999H68.5251V20.24H70.1489V16.24C70.7984 16.72 71.6915 17.04 72.5846 17.04C74.858 17.04 76.6442 15.28 76.6442 13.04V11.2C76.6442 9.03999 74.858 7.19999 72.5846 7.19999ZM75.0204 13.04C75.0204 14.4 73.9649 15.44 72.5846 15.44C71.2044 15.44 70.1489 14.4 70.1489 13.04V11.2C70.1489 9.83999 71.2044 8.79999 72.5846 8.79999C73.9649 8.79999 75.0204 9.83999 75.0204 11.2V13.04Z" fill="white"></path>
+					<path d="M82.4087 7.2C81.5156 7.2 80.6225 7.52 79.9729 8V4H78.3491V17.04H79.9729V11.2C79.9729 9.84 81.0284 8.8 82.4087 8.8C83.7889 8.8 84.8444 9.84 84.8444 11.2V17.04H86.4682V11.2C86.4682 9.04 84.6008 7.2 82.4087 7.2Z" fill="white"></path>
+					<path d="M99.7023 13.0401V8.80009H102.219L102.95 7.20009H99.7023V5.8401H98.0785V7.20009H96.6982V8.80009H98.0785V13.0401C98.0785 15.2801 99.8647 17.0401 102.138 17.0401H102.95V15.4401H102.138C100.758 15.4401 99.7023 14.4001 99.7023 13.0401Z" fill="white"></path>
+					<path d="M129.451 20.395C126.139 20.395 124 18.601 124 14.967H126.231C126.231 17.405 127.519 18.256 129.451 18.256C131.245 18.256 132.579 17.405 132.579 15.703C132.579 14.001 131.015 13.495 129.244 12.989C126.921 12.299 124.23 11.609 124.23 8.182C124.23 5.261 126.116 3.605 129.336 3.605C132.579 3.605 134.649 5.376 134.649 8.872H132.418C132.418 6.641 131.245 5.698 129.336 5.698C127.519 5.698 126.461 6.572 126.461 8.182C126.461 9.999 128.186 10.482 130.072 11.011C132.349 11.655 134.833 12.391 134.833 15.657C134.833 18.693 132.763 20.395 129.451 20.395Z" fill="#9375FF"></path>
+					<path d="M142.616 20.349C139.419 20.349 137.211 18.026 137.211 14.714V9.217C137.211 5.905 139.419 3.605 142.616 3.605C145.928 3.605 148.044 6.066 148.044 9.447V9.585H145.79V9.424C145.79 7.515 144.778 5.79 142.616 5.79C141.029 5.79 139.465 6.802 139.465 9.148V14.783C139.465 17.014 140.845 18.164 142.616 18.164C144.985 18.164 145.79 16.163 145.79 14.392V14.231H148.044V14.392C148.044 17.842 145.997 20.349 142.616 20.349Z" fill="#9375FF"></path>
+					<path d="M148.89 20.119L154.157 3.904H156.687L161.862 20.119H159.493L158.389 16.462H152.363L151.236 20.119H148.89ZM152.938 14.507H157.837L155.422 6.388L152.938 14.507Z" fill="#9375FF"></path>
+					<path d="M163.838 20.119V3.904H166.092V17.934H172.325V20.119H163.838Z" fill="#9375FF"></path>
+					<path d="M174.62 20.119V3.904H183.636V6.089H176.874V10.965H181.796V12.966H176.874V17.934H183.636V20.119H174.62Z" fill="#9375FF"></path>
+					<path d="M191.555 20.119V3.904H193.763L198.271 14.369L202.802 3.904H205.01V20.119H202.756V8.849L199.076 17.313H197.466L193.809 8.895V20.119H191.555Z" fill="#9375FF"></path>
+					<path d="M208.468 20.119V3.904H213.367C216.656 3.904 218.772 5.928 218.772 9.562V10.022C218.772 12.713 217.369 14.392 215.253 14.967L218.703 20.119H216.104L213.114 15.45H210.722V20.119H208.468ZM210.722 13.288H213.114C215.046 13.288 216.541 12.322 216.541 9.999V9.447C216.541 6.917 215.069 6.089 213.114 6.089H210.722V13.288Z" fill="#9375FF"></path>
+					<path d="M221.428 20.119V3.904H223.682V20.119H221.428Z" fill="#9375FF"></path>
+				</svg>
+			</div>
+			<div style="display: flex; justify-content: flex-end; align-items: center; flex-grow: 0; flex-shrink: 0; height: 48px; gap: 16px;">
+				<div style="display: flex; justify-content: flex-end; align-items: center; flex-grow: 0; flex-shrink: 0;">
+					<div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 44px; height: 48px; position: relative; gap: 6px; padding: 15px; border-radius: 3px;">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 24px; height: 24px; position: relative;" preserveAspectRatio="none">
+							<g clip-path="url(#clip0_51_348)">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M7.93781 12.1566C7.93781 9.80611 9.80611 7.93781 12.1566 7.93781C14.507 7.93781 16.3753 9.80611 16.3753 12.1566C16.3753 14.507 14.507 16.3753 12.1566 16.3753C9.80611 16.3753 7.93781 14.507 7.93781 12.1566ZM9.14316 12.1566C9.14316 13.8441 10.4691 15.1699 12.1566 15.1699C13.8441 15.1699 15.1699 13.8441 15.1699 12.1566C15.1699 10.4691 13.8441 9.14316 12.1566 9.14316C10.4691 9.14316 9.14316 10.4691 9.14316 12.1566Z" fill="white" fill-opacity="0.6"></path>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M20.4375 9.04688L22.4062 9.67969C22.8984 9.82031 23.25 10.3125 23.25 10.8047V13.1953C23.25 13.6875 22.8984 14.1094 22.4766 14.25L20.4375 14.8828L20.0156 15.9375L21 17.7656C21.2109 18.1875 21.1406 18.75 20.7891 19.1016L19.1016 20.7891C18.75 21.1406 18.1875 21.2109 17.7656 21L15.9375 20.0156L14.8828 20.4375L14.25 22.4766C14.1094 22.8984 13.6875 23.25 13.1953 23.25H10.8047C10.3125 23.25 9.89062 22.8984 9.75 22.4766L9.11719 20.4375L8.0625 20.0156L6.23438 21C5.8125 21.2109 5.25 21.1406 4.89844 20.7891L3.21094 19.1016C2.85938 18.75 2.78906 18.1875 3 17.7656L3.98438 15.9375L3.5625 14.8828L1.59375 14.25C1.10156 14.1094 0.75 13.6875 0.75 13.1953V10.8047C0.75 10.3125 1.10156 9.89062 1.52344 9.75L3.49219 9.11719C3.5625 8.94141 3.63281 8.74805 3.70312 8.55469C3.77344 8.36133 3.84375 8.16797 3.91406 7.99219L3 6.23438C2.78906 5.8125 2.85938 5.25 3.21094 4.89844L4.89844 3.21094C5.25 2.85938 5.8125 2.78906 6.23438 3L8.0625 3.98438C8.41406 3.77344 8.76562 3.63281 9.1875 3.5625L9.82031 1.59375C9.89062 1.10156 10.3125 0.75 10.8047 0.75H13.1953C13.6875 0.75 14.1094 1.10156 14.25 1.52344L14.8828 3.49219L15.9375 3.91406L17.7656 2.92969C18.1875 2.71875 18.75 2.78906 19.1016 3.14062L20.7891 4.82812C21.1406 5.17969 21.2109 5.74219 21 6.16406L20.0156 7.99219L20.4375 9.04688ZM19.3125 13.7578L21.8438 12.9844V11.0156L19.3125 10.2422L19.2422 9.89062C19.1016 9.39844 18.8906 8.90625 18.6094 8.41406L18.3984 8.0625L19.6641 5.74219L18.2578 4.33594L15.9375 5.60156L15.5859 5.39063C15.0938 5.10938 14.6016 4.89844 14.1094 4.75781L13.7578 4.61719L12.9844 2.15625H11.0156L10.2422 4.61719L9.89062 4.75781C9.32812 4.89844 8.83594 5.10938 8.34375 5.39063L7.99219 5.60156L5.74219 4.33594L4.33594 5.74219L5.53125 8.0625L5.32031 8.41406C5.03906 8.90625 4.82812 9.39844 4.6875 9.96094L4.54688 10.3125L2.15625 11.0156V12.9844L4.6875 13.7578L4.75781 14.1094C4.89844 14.6016 5.10938 15.0938 5.39063 15.5859L5.60156 15.9375L4.33594 18.2578L5.74219 19.6641L8.0625 18.3984L8.41406 18.6094L9.89062 19.2422L10.2422 19.3125L11.0156 21.8438H12.9844L13.7578 19.3125L14.1094 19.2422C14.6016 19.1016 15.0938 18.8906 15.5859 18.6094L15.9375 18.3984L18.2578 19.6641L19.6641 18.2578L18.3984 15.9375L18.6094 15.5859L19.2422 14.1094L19.3125 13.7578Z" fill="white" fill-opacity="0.6"></path>
+							</g>
+							<defs>
+								<clipPath id="clip0_51_348">
+									<rect width="24" height="24" fill="white"></rect>
+								</clipPath>
+							</defs>
+						</svg>
+					</div>
+				</div>
+				<div style="display: flex; justify-content: flex-end; align-items: center; flex-grow: 0; flex-shrink: 0; gap: 16px;">
+					<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; width: 1px; height: 18px; gap: 10px; padding: 10px; background: rgba(255,255,255,0.2);"></div>
+					<div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; position: relative; gap: 10px; padding: 4px; border-radius: 3px;">
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 16px; height: 16px; position: relative;" preserveAspectRatio="xMidYMid meet">
+							<path d="M15 7H1V9H15V7Z" fill="white" fill-opacity="0.6"></path>
+						</svg>
+					</div>
+					<div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; position: relative; gap: 10px; padding: 4px; border-radius: 3px;">
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 16px; height: 16px; position: relative;" preserveAspectRatio="xMidYMid meet">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 1H4V1.5V4H1.5H1V4.5V14.5V15H1.5H11.5H12V14.5V12H14.5H15V11.5V1.5V1H14.5H4.5ZM11 12H4.5H4V11.5V5H2V14H11V12ZM5 11V2H14V11H5Z" fill="white" fill-opacity="0.6"></path>
+						</svg>
+					</div>
+					<div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; position: relative; gap: 10px; padding: 4px; border-radius: 3px;">
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-grow: 0; flex-shrink: 0; width: 16px; height: 16px; position: relative;" preserveAspectRatio="none">
+							<path d="M4.20698 3.5L3.49988 4.20711L7.31361 8.25969L3.56893 12.2389L4.27604 12.946L7.99988 8.98894L11.7237 12.946L12.4308 12.2389L8.68615 8.25969L12.4999 4.20711L11.7928 3.5L7.99988 7.53044L4.20698 3.5Z" fill="white"></path>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
 </html>
