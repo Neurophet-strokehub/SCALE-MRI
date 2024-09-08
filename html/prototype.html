@@ -21,51 +21,75 @@
 			-moz-osx-font-smoothing: grayscale;
 			font-family: Spoqa Han Sans Neo, sans-serif;
 			
-		}
-		.radio-group {
-            display: flex;
-            gap: 16px;
-        }
-        .radio-box {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 8px;
-            user-select: none;
-        }
-        .radio-box input {
-            display: none;
-        }
-        .radio-box .radio-icon {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            border: 1px solid grey;
-            margin-right: 10px;
-            position: relative;
-        }
-        .radio-box .radio-icon::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            background-color: #1077FE;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-        }
-        .radio-box input:checked + .radio-icon::before {
-            opacity: 1;
-        }
-        .radio-box:hover .radio-icon {
-            border-color: #0a5ccf;
-        }
-        .radio-box.disabled {
-            cursor: not-allowed;
-            color: rgba(255, 255, 255, 0.5);
-        }
+		} 
+      .radio-box {
+        display: flex;
+        align-items: center;
+        font-family: var(--Radio-Font);
+        font-size: var(--Font-Scale-Body2);
+      }
+
+      /* SVG Icon styles */
+      .radio-box-icon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      /* Unselected state */
+      .radio-box-icon {
+        color: var(--RadioBox-Unselected-Icon);
+      }
+
+      .radio-box:hover .radio-box-icon {
+        color: var(--RadioBox-Unselected-Hover-Icon);
+      }
+
+      .radio-box:disabled .radio-box-icon {
+        color: var(--RadioBox-Unselected-Disabled-Icon);
+      }
+
+      /* Selected state */
+      .radio-box.selected .radio-box-icon {
+        color: var(--RadioBox-Selected-Icon);
+      }
+
+      .radio-box.selected:hover .radio-box-icon {
+        color: var(--RadioBox-Selected-Hover-Icon);
+      }
+
+      .radio-box.selected:disabled .radio-box-icon {
+        color: var(--RadioBox-Selected-Disabled-Icon);
+      }
+
+      /* Text styles */
+      .radio-box-text {
+        margin-left: 8px;
+        color: var(--RadioBox-Unselected-Text);
+      }
+
+      .radio-box:hover .radio-box-text {
+        color: var(--RadioBox-Unselected-Hover-Text);
+      }
+
+      .radio-box:disabled .radio-box-text {
+        color: var(--RadioBox-Unselected-Disabled-Text);
+      }
+
+      /* Selected state text */
+      .radio-box.selected .radio-box-text {
+        color: var(--RadioBox-Selected-Text);
+      }
+
+      .radio-box.selected:hover .radio-box-text {
+        color: var(--RadioBox-Selected-Hover-Text);
+      }
+
+      .radio-box.selected:disabled .radio-box-text {
+        color: var(--RadioBox-Selected-Disabled-Text);
+      } 
         
 	</style>
 </head>
