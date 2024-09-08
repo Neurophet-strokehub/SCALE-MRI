@@ -1,258 +1,127 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preview</title>
     <link href="/styles/style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    /* Container for file info */
-    .file-info-container {
-    background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
-    padding: 0.75rem 1rem; /* px-4 py-3 */
-    border-radius: 0.25rem; /* rounded-[3px] */
-    width: 100%; /* Full width of its parent */
-    }
-
-    /* Content inside the container */
-    .file-info-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* gap-4 */
-    height: 45px; /* h-[45px] */
-    }
-
-    /* SWI button styles */
-    .swi-button, .phase-button {
-    width: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem; /* gap-2 */
-    padding: 0.5rem 0.75rem; /* px-3 py-2 */
-    border-radius: 0.25rem; /* rounded-[3px] */
-    background-color: rgba(255, 255, 255, 0.30); /* bg-white/30 */
-    transition: background-color 0.2s; /* transition-colors duration-200 */
-    }
-
-    .swi-button:hover, .phase-button:hover {
-    background-color: rgba(255, 255, 255, 0.40); /* hover:bg-white/40 */
-    }
-
-    /* SWI button text */
-    .swi-button-text, .phase-button-text {
-    font-size: 0.875rem; /* text-sm */
-    font-weight: 500; /* font-medium */
-    text-align: center;
-    color: white;
-    }
-
-    /* File info text */
-    .swi-file-info, .phase-file-into {
-    flex-grow: 1;
-    font-size: 0.875rem; /* text-sm */
-    color: rgba(255, 255, 255, 0.60); /* text-white/60 */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 200px; /* Fixed width for the file info container */
-    }
-
-    /* Remove button styles */
-    .remove-swi-button, .remove-phase-button {
-    margin-left: 0.5rem; /* ml-2 */
-    width: 24px; /* w-6 */
-    height: 24px; /* h-6 */
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
-    }
-
-    </style>
-
-    </head>
-    <body>
+</head>
+<body>
     <div class="w-full h-full relative overflow-hidden bg-[#282828]">
-    <!-- Header -->
-    <div class="header">
-    <div class="w-full flex justify-between items-center bg-[#383838] px-5">
-    <!-- Logo or main icon -->
-    <div class="flex items-center gap-1 pl-4">
-    <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
-    </div>
-    <!-- Header right section -->
-    <div class="h-12 flex justify-end items-center gap-3">
-    <!-- Buttons and Icons -->
-    <div class="w-6 h-6 icon-disabled flex justify-center items-center">
-    <img src="/logo/02_accessbar-setting.png" alt="Accessbar Setting" class="w-6 h-6">
-    </div>
-    <div class="h-4 w-px bg-white"></div>
-    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-    <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
-    </svg>
-    </button>
-    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-    <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
-    </svg>
-    </button>
-    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-    <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-    </svg>
-    </button>
-    </div>
-    </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="flex flex-col justify-start items-start absolute left-1/2 transform -translate-x-1/2 top-12 overflow-hidden gap-10 pt-10 bg-[#282828] sm:max-w-full lg:max-w-[600px]">
-    <!-- Content Section -->
-    <div class="flex flex-col justify-start items-start gap-5">
-    <!-- Analysis Section -->
-    <div class="flex flex-col justify-start items-start relative gap-5">
-    <p class="w-full text-lg sm:text-xl md:text-2xl font-bold text-left text-white">Run Analysis</p>
-    <p class="w-full text-sm sm:text-base md:text-lg text-left text-white">Run analysis to detect cerebral microbleeds.</p>
-    </div>
-    <div class="w-full h-px bg-white/20"></div>
-
-    <!-- Image Selection Section -->
-    <div class="flex flex-col justify-start items-start gap-6">
-    <div class="flex flex-col justify-start items-start gap-5">
-    <div class="flex flex-col justify-start items-start relative gap-3">
-    <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">Select Images</p>
-    <p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
-    <div class="radio-group">
-    <label class="radio-container">
-    <input type="radio" name="radio-image" id="dicom-radio">
-    <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
-    </label>
-    <label class="radio-container">
-    <input type="radio" name="radio-image" id="nifti-radio">
-    <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
-    </label>
-    </div>
-
-    <div class="file-info-content">
-    <button id="swi-button" class="swi-button">
-    <p class="swi-button-text">SWI</p>
-    </button>
-    <div id="swi-file-info" class="swi-file-info">Select the image file or folder</div>
-    <button id="remove-swi-button" class="remove-swi-button" style="display: none;">×</button>
-    </div>
-
-
-    <div class="file-info-content">
-        <button id="swi-button" class="swi-button">
-        <p class="swi-button-text">Phase</p>
-        </button>
-        <div id="swi-file-info" class="swi-file-info">Select the image file or folder</div>
-        <button id="remove-swi-button" class="remove-swi-button" style="display: none;">×</button>
+        <!-- Header -->
+        <div class="header">
+            <div class="w-full flex justify-between items-center bg-[#383838] px-5">
+                <!-- Logo or main icon -->
+                <div class="flex items-center gap-1 pl-4">
+                    <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
+                </div>
+                <!-- Header right section -->
+                <div class="h-12 flex justify-end items-center gap-3">
+                    <!-- Buttons and Icons -->
+                    <div class="w-6 h-6 icon-disabled flex justify-center items-center">
+                        <img src="/logo/02_accessbar-setting.png" alt="Accessbar Setting" class="w-6 h-6">
+                    </div>
+                    <div class="h-4 w-px bg-white"></div>
+                    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
+                        </svg>
+                    </button>
+                    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                        <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
+                        </svg>
+                    </button>
+                    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
 
+        <!-- Main Content -->
+        <div class="flex flex-col justify-start items-start absolute left-1/2 transform -translate-x-1/2 top-12 overflow-hidden gap-10 pt-10 bg-[#282828] sm:max-w-full lg:max-w-[600px]">
+            <!-- Content Section -->
+            <div class="flex flex-col justify-start items-start gap-5">
+                <!-- Analysis Section -->
+                <div class="flex flex-col justify-start items-start relative gap-5">
+                    <p class="w-full text-lg sm:text-xl md:text-2xl font-bold text-left text-white">Run Analysis</p>
+                    <p class="w-full text-sm sm:text-base md:text-lg text-left text-white">Run analysis to detect cerebral microbleeds.</p>
+                </div>
+                <div class="w-full h-px bg-white/20"></div>
 
-    <div class="w-full h-px bg-white/20"></div>
-    <!-- MRI Scanner Type Section -->
-    <div class="flex flex-col justify-start items-start gap-6">
-    <div class="flex flex-col justify-start items-start gap-5">
-    <div class="flex flex-col w-full gap-3">
-    <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
-    <div class="radio-group">
-    <label class="radio-container">
-    <input type="radio" name="radio-scanner" id="left-handed-radio">
-    <p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
-    </label>
-    <label class="radio-container">
-    <input type="radio" name="radio-scanner" id="right-handed-radio">
-    <p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
-    </label>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+                <!-- Image Selection Section -->
+                <div class="flex flex-col justify-start items-start gap-6">
+                    <div class="flex flex-col justify-start items-start gap-5">
+                        <div class="flex flex-col justify-start items-start relative gap-3">
+                            <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">Select Images</p>
+                            <p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
+                            <div class="radio-group">
+                                <label class="radio-container">
+                                    <input type="radio" name="radio-image" id="dicom-radio">
+                                    <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
+                                </label>
+                                <label class="radio-container">
+                                    <input type="radio" name="radio-image" id="nifti-radio">
+                                    <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
+                                </label>
+                            </div>
 
-    <!-- Buttons -->
-    <div class="flex justify-end gap-4 w-full mt-6">
-    <button id="reset-button" class="w-[120px] px-5 py-3 rounded-[3px] border border-white/10 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-white/10 transition-colors duration-200" disabled>Reset</button>
-    <button class="w-[120px] px-5 py-3 rounded-[3px] bg-[#1077fe]/20 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-[#1077fe]/30 active:bg-[#1077fe]/40 transition-colors duration-200">Run</button>
-    </div>
-    </div>
-    </div>
+                            <div class="file-info-content">
+                                <button id="swi-button" class="swi-button">
+                                    <p class="swi-button-text">SWI</p>
+                                </button>
+                                <div id="swi-file-info" class="swi-file-info">Select the image file or folder</div>
+                                <button id="remove-swi-button" class="remove-swi-button" style="display: none;">×</button>
+                            </div>
 
-    <!-- Hidden file input for SWI (folders) -->
-    <input type="file" id="swi-folder-input" style="display: none;" webkitdirectory mozdirectory msdirectory odirectory directory>
+                            <div class="file-info-content">
+                                <button id="phase-button" class="phase-button">
+                                    <p class="phase-button-text">Phase</p>
+                                </button>
+                                <div id="phase-file-info" class="phase-file-info">Select the image file or folder</div>
+                                <button id="remove-phase-button" class="remove-phase-button" style="display: none;">×</button>
+                            </div>
 
-    <script>
-    document.getElementById('logo').addEventListener('click', function() {
-    window.location.reload();
-    });
+                            <div class="w-full h-px bg-white/20"></div>
 
-    const resetButton = document.getElementById('reset-button');
-    const radioImageButtons = document.querySelectorAll('input[name="radio-image"]');
-    const radioScannerButtons = document.querySelectorAll('input[name="radio-scanner"]');
-    const swiFolderInput = document.getElementById('swi-folder-input');
-    const swiFileInfo = document.getElementById('swi-file-info');
-    const removeSwiButton = document.getElementById('remove-swi-button');
+                            <!-- MRI Scanner Type Section -->
+                            <div class="flex flex-col justify-start items-start gap-6">
+                                <div class="flex flex-col justify-start items-start gap-5">
+                                    <div class="flex flex-col w-full gap-3">
+                                        <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
+                                        <div class="radio-group">
+                                            <label class="radio-container">
+                                                <input type="radio" name="radio-scanner" id="left-handed-radio">
+                                                <p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
+                                            </label>
+                                            <label class="radio-container">
+                                                <input type="radio" name="radio-scanner" id="right-handed-radio">
+                                                <p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    function checkRadioButtons() {
-    const imageChecked = Array.from(radioImageButtons).some(radio => radio.checked);
-    const scannerChecked = Array.from(radioScannerButtons).some(radio => radio.checked);
-    const isAnyChecked = imageChecked || scannerChecked;
+                <!-- Buttons -->
+                <div class="flex justify-end gap-4 w-full mt-6">
+                    <button id="reset-button" class="reset-button" disabled>Reset</button>
+                    <button class="run-button">Run</button>
+                </div>
+            </div>
+        </div>
 
-    resetButton.disabled = !isAnyChecked;
-    resetButton.classList.toggle('text-white/20', !isAnyChecked); // Make button look inactive
-    resetButton.classList.toggle('text-white', isAnyChecked); // Make button look active
-    }
+        <!-- Hidden file inputs -->
+        <input type="file" id="swi-folder-input" style="display: none;" webkitdirectory mozdirectory msdirectory odirectory directory>
+        <input type="file" id="phase-folder-input" style="display: none;" webkitdirectory mozdirectory msdirectory odirectory directory>
 
-    function resetForm() {
-    radioImageButtons.forEach(radio => radio.checked = false);
-    radioScannerButtons.forEach(radio => radio.checked = false);
-    swiFileInfo.textContent = 'Select the image file or folder';
-    swiFileInfo.classList.remove('text-white');
-    swiFileInfo.classList.add('text-white/60');
-    removeSwiButton.style.display = 'none';
-    checkRadioButtons();
-    }
-
-    function openFolderDialog() {
-    swiFolderInput.click();
-    }
-
-    function handleFileUpload(event) {
-    const files = event.target.files;
-    if (files.length > 0) {
-    // Display only the filename
-    swiFileInfo.textContent = files[0].name;
-    swiFileInfo.classList.remove('text-white/60');
-    swiFileInfo.classList.add('text-white');
-    removeSwiButton.style.display = 'inline-block';
-    }
-    }
-
-    function removeFile() {
-    swiFolderInput.value = ''; // Clear the input
-    swiFileInfo.textContent = 'Select the image file or folder';
-    swiFileInfo.classList.remove('text-white');
-    swiFileInfo.classList.add('text-white/60');
-    removeSwiButton.style.display = 'none';
-    }
-
-    radioImageButtons.forEach(radio => {
-    radio.addEventListener('change', checkRadioButtons);
-    });
-
-    radioScannerButtons.forEach(radio => {
-    radio.addEventListener('change', checkRadioButtons);
-    });
-
-    resetButton.addEventListener('click', resetForm);
-    document.getElementById('swi-button').addEventListener('click', openFolderDialog);
-    swiFolderInput.addEventListener('change', handleFileUpload);
-    removeSwiButton.addEventListener('click', removeFile);
-    </script>
+        <script src="/scripts/main.js"></script>
     </body>
-    </html>
+</html>
