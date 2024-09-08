@@ -67,20 +67,29 @@ body {
 .remove-swi-button:hover, .remove-phase-button:hover {
     background-color: rgba(255, 255, 255, 0.30); /* bg-white/30 */
 }
-
+/* Reset Button Styles */
 .reset-button {
-    background-color: rgba(255, 0, 0, 0.50); /* bg-red-500/50 */
-    color: #ffffff; /* text-white */
-    padding: 0.5rem 1rem; /* px-4 py-2 */
-    border-radius: 0.25rem; /* rounded-[3px] */
-    border: none;
-    cursor: pointer;
+  background-color: #e53e3e; /* Red background */
+  color: #ffffff; /* White text */
+  padding: 0.5rem 1rem; /* Padding */
+  border-radius: 0.25rem; /* Rounded corners */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 0.875rem; /* Text size */
+  font-weight: bold; /* Bold text */
+  transition: background-color 0.2s, opacity 0.2s; /* Smooth transitions */
+}
+
+.reset-button:hover {
+  background-color: #c53030; /* Darker red on hover */
 }
 
 .reset-button:disabled {
-    background-color: rgba(255, 0, 0, 0.20); /* bg-red-500/20 */
-    cursor: not-allowed;
+  background-color: #f56565; /* Light red when disabled */
+  cursor: not-allowed; /* Not allowed cursor */
+  opacity: 0.5; /* Semi-transparent */
 }
+
 
 .run-button {
     background-color: rgba(0, 255, 0, 0.50); /* bg-green-500/50 */
@@ -114,12 +123,15 @@ body {
 }
 
 /* Header button icons */
+/* Icon Styles */
 .icon-disabled {
-    filter: grayscale(100%);
-    opacity: 0.5;
+  filter: grayscale(100%); /* Makes icon grayscale */
+  opacity: 0.5; /* Makes icon semi-transparent */
+  cursor: not-allowed; /* Indicates that the icon is not clickable */
 }
 
-/* General Utility Styles */
-.bg-dark-gray {
-    background-color: #282828;
+.icon-enabled {
+  filter: none; /* Normal icon color */
+  opacity: 1; /* Fully opaque */
+  cursor: pointer; /* Indicates that the icon is clickable */
 }
