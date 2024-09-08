@@ -1,111 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preview</title>
+    <link href="/styles/style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        html,
-        body {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-        }
-
-        .icon-disabled {
-            position: relative;
-            cursor: not-allowed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-disabled::before {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            opacity: 0.6;
-            pointer-events: none;
-            display: none;
-            /* Hide by default */
-        }
-
-        .icon-disabled:hover::before {
-            display: block;
-            /* Show on hover */
-        }
-
-        /* The container */
-        .container {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            font-size: 22px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        /* Hide the browser's default radio button */
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        /* Create a custom radio button */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px;
-            /* 조정된 크기 */
-            width: 20px;
-            /* 조정된 크기 */
-            background-color: #eee;
-            border-radius: 50%;
-        }
-
-        /* On mouse-over, add a grey background color */
-        .container:hover input~.checkmark {
-            background-color: #ccc;
-        }
-
-        /* When the radio button is checked, add a blue background */
-        .container input:checked~.checkmark {
-            background-color: #2196F3;
-        }
-
-        /* Style the indicator (dot/circle) */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            top: 6px;
-            /* 조정된 위치 */
-            left: 6px;
-            /* 조정된 위치 */
-            width: 8px;
-            /* 조정된 크기 */
-            height: 8px;
-            /* 조정된 크기 */
-            border-radius: 50%;
-            background: white;
-        }
-    </style>
 </head>
 
 <body>
     <div class="w-full h-full relative overflow-hidden bg-[#282828]">
+        <!-- Header -->
         <div class="header">
             <div class="w-full flex justify-between items-center bg-[#383838] px-5">
                 <!-- Logo or main icon -->
-                <div class="flex items-center gap-1" style="padding-left: 1rem;">
+                <div class="flex items-center gap-1 pl-4">
                     <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
                 </div>
                 <!-- Header right section -->
@@ -118,118 +28,105 @@
                     <div class="h-4 w-px bg-white"></div>
                     <!-- Minimize Button -->
                     <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
                         </svg>
                     </button>
                     <!-- Maximize Button -->
                     <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-                        <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
-                            </rect>
+                        <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
                         </svg>
                     </button>
                     <!-- Close Button -->
                     <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
+        <!-- Main Content -->
         <div class="flex flex-col justify-start items-start absolute left-1/2 transform -translate-x-1/2 top-12 overflow-hidden gap-10 pt-10 bg-[#282828] sm:max-w-full lg:max-w-[600px]">
-			<!-- Content Section -->
-			<div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-6">
-				<!-- Analysis Section -->
-				<div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-5">
-					<p class="w-full text-lg sm:text-xl md:text-2xl font-bold text-left text-white">Run Analysis</p>
-					<p class="w-full text-sm sm:text-base md:text-lg text-left text-white">Run analysis to detect cerebral microbleeds.</p>
-				</div>
-				<div class="w-full h-px bg-white/20"></div>
-				<!-- Image Selection Section -->
-				<div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-6">
-					<div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-5">
-						<div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-3">
-							<p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">Select Images</p>
-							<p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
-							<div class="flex justify-start items-start flex-grow-0 flex-shrink-0 gap-8">
-								<label class="container">
-									<p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
-									<input type="radio" checked="checked" name="radio">
-									<span class="checkmark"></span>
-								</label>
-								<label class="container">
-									<p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
-									<input type="radio" name="radio">
-									<span class="checkmark"></span>
-								</label>
-							</div>
-							<div class="flex flex-col justify-center items-start w-full gap-3 px-4 py-3 bg-white/5">
-								<div class="flex justify-start items-center w-full h-[45px] gap-4">
-									<div class="flex justify-center items-center w-[160px] gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
-										<p class="text-sm sm:text-base font-medium text-center text-white">SWI</p>
-									</div>
-									<p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
-								</div>
-							</div>
-							<div class="flex flex-col justify-center items-start w-full gap-3 px-4 py-3 bg-white/5">
-								<div class="flex justify-start items-center w-full h-[45px] gap-4">
-									<div class="flex justify-center items-center w-[160px] gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
-										<p class="text-sm sm:text-base font-medium text-center text-white">Phase</p>
-									</div>
-									<p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="w-full h-px bg-white/20"></div>
-				<!-- MRI Scanner Type Section -->
-				<div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-6">
-					<div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-5">
-						<div class="flex flex-col justify-start items-start w-full gap-3">
-							<p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
-							<div class="flex flex-col justify-start items-start w-full gap-3">
-								<div class="flex justify-start items-start w-full gap-8">
-									<div class="flex justify-start items-center gap-3">
-										<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-											<g clip-path="url(#clip0_1_1867)">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5ZM15.5 8C15.5 12.1421 12.1421 15.5 8 15.5C3.85786 15.5 0.5 12.1421 0.5 8C0.5 3.85786 3.85786 0.5 8 0.5C12.1421 0.5 15.5 3.85786 15.5 8Z" fill="white"></path>
-											</g>
-											<defs>
-												<clipPath id="clip0_1_1867">
-													<rect width="16" height="16" fill="white"></rect>
-												</clipPath>
-											</defs>
-										</svg>
-										<p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
-									</div>
-									<div class="flex justify-start items-center gap-3">
-										<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-											<g clip-path="url(#clip0_1_1868)">
-												<path fill-rule="evenodd" clip-rule="evenodd" d="M8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5ZM15.5 8C15.5 12.1421 12.1421 15.5 8 15.5C3.85786 15.5 0.5 12.1421 0.5 8C0.5 3.85786 3.85786 0.5 8 0.5C12.1421 0.5 15.5 3.85786 15.5 8Z" fill="white"></path>
-											</g>
-											<defs>
-												<clipPath id="clip0_1_1868">
-													<rect width="16" height="16" fill="white"></rect>
-												</clipPath>
-											</defs>
-										</svg>
-										<p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Buttons -->
-			<div class="flex justify-end gap-4 w-full mt-6">
-				<button class="w-[120px] px-5 py-3 rounded-[3px] border border-white/10 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-white/10 transition-colors duration-200"> Reset </button>
-				<button class="w-[120px] px-5 py-3 rounded-[3px] bg-[#1077fe]/20 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-[#1077fe]/30 active:bg-[#1077fe]/40 transition-colors duration-200"> Run </button>
-			</div>
-		</div>
+            <!-- Content Section -->
+            <div class="flex flex-col justify-start items-start gap-6">
+                <!-- Analysis Section -->
+                <div class="flex flex-col justify-start items-start relative gap-5">
+                    <p class="w-full text-lg sm:text-xl md:text-2xl font-bold text-left text-white">Run Analysis</p>
+                    <p class="w-full text-sm sm:text-base md:text-lg text-left text-white">Run analysis to detect cerebral microbleeds.</p>
+                </div>
+                <div class="w-full h-px bg-white/20"></div>
+                <!-- Image Selection Section -->
+                <div class="flex flex-col justify-start items-start gap-6">
+                    <div class="flex flex-col justify-start items-start gap-5">
+                        <div class="flex flex-col justify-start items-start relative gap-3">
+                            <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">Select Images</p>
+                            <p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
+                            <div class="flex gap-8">
+                                <label class="container">
+                                    <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
+                                    <input type="radio" checked name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">
+                                    <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
+                                    <input type="radio" name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
+                                <div class="flex items-center gap-4 h-[45px]">
+                                    <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
+                                        <p class="text-sm sm:text-base font-medium text-center text-white">SWI</p>
+                                    </div>
+                                    <p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
+                                <div class="flex items-center gap-4 h-[45px]">
+                                    <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
+                                        <p class="text-sm sm:text-base font-medium text-center text-white">Phase</p>
+                                    </div>
+                                    <p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-px bg-white/20"></div>
+                <!-- MRI Scanner Type Section -->
+                <div class="flex flex-col justify-start items-start gap-6">
+                    <div class="flex flex-col justify-start items-start gap-5">
+                        <div class="flex flex-col w-full gap-3">
+                            <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
+                            <div class="flex flex-col w-full gap-3">
+                                <label class="container">
+                                    <p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
+                                    <input type="radio" checked name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">
+                                    <p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
+                                    <input type="radio" name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <div class="flex justify-end gap-4 w-full mt-6">
+                <button class="w-[120px] px-5 py-3 rounded-[3px] border border-white/10 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-white/10 transition-colors duration-200">Reset</button>
+                <button class="w-[120px] px-5 py-3 rounded-[3px] bg-[#1077fe]/20 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-[#1077fe]/30 active:bg-[#1077fe]/40 transition-colors duration-200">Run</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.getElementById('logo').addEventListener('click', function() {
             window.location.reload();
