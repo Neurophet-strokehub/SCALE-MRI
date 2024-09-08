@@ -22,7 +22,6 @@
 		}
 		.radio-group {
             display: flex;
-            flex-direction: column;
             gap: 16px;
         }
         .radio-box {
@@ -60,7 +59,7 @@
         }
         .radio-box span {
             font-size: 14px;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
         }
         .radio-box:hover .radio-icon {
             border-color: #0a5ccf;
@@ -93,20 +92,15 @@
 							<p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 480px; font-size: 16px; font-weight: 700; text-align: left; color: #fff;"> Select Images </p>
 							<p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 480px; font-size: 14px; text-align: left; color: rgba(255,255,255,0.9);"> Use SWI and Phase images. </p>
 						</div>
-						<div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-grow: 0; flex-shrink: 0; gap: 24px;">
+						<div style="display: flex; flex-direction: row; gap: 24px; align-items: center;">
                             <div class="radio-group">
-                                <h3>Group 1</h3>
-                                <label class="radio-box">
                                     <input type="radio" name="group1" id="radio1" value="DICOM">
-                                    <div class="radio-icon"></div>
-                                    <span>DICOM</span>
-                                </label>
-                                <label class="radio-box">
-                                    <input type="radio" name="group1" id="radio2" value="NIfTI">
-                                    <div class="radio-icon"></div>
-                                    <span>NIfTI</span>
-                                </label>
-                            </div>
+                                    <div class="radio-icon"><span>DICOM</span></div>
+                                    
+                                     <input type="radio" name="group1" id="radio2" value="NIfTI">
+                                    <div class="radio-icon"><p>NIfTI</p></div>
+                                    
+                             </div>
 						</div>
 						<div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; flex-grow: 0; flex-shrink: 0; width: 480px; gap: 10px; padding-left: 14px; padding-right: 14px; padding-top: 10px; padding-bottom: 10px; background: rgba(255,255,255,0.05);">
 							<div style="display: flex; justify-content: flex-start; align-items: center; align-self: stretch; flex-grow: 0; flex-shrink: 0; height: 39px; position: relative; gap: 14px;">
