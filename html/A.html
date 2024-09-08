@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder Viewer</title>
+    <style>
+        body {
+            background-color: #282828;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .folder, .file {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+            cursor: pointer;
+        }
+        .folder:hover, .file:hover {
+            background-color: #444;
+        }
+        .file {
+            margin-left: 20px;
+        }
+        .folder-contents {
+            margin-left: 20px;
+        }
+        #folder-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>View Folder Contents</h1>
+
+    <input type="file" id="folder-input" webkitdirectory mozdirectory msdirectory odirectory directory>
+    <div id="folder-info"></div>
+
+    <script>
+        document.getElementById('folder-input').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const folderInfo = document.getElementById('folder-info');
+            folderInfo.innerHTML = ''; // Clear previous content
+
+            const folderMap = {};
+
+            Array.from(files).forEach(file => {
+                const pathParts = file.webkitRelativePath.split('/');
+                let currentFolder = folderMap;
+
+                pathParts.forEach((part, index) => {
+                    if (!currentFolder[part]) {
+                        currentFolder[part] = index < pathParts.length - 1 ? {} : file;
+                    }
+                    currentFolder = currentFolder[part];
+                });
+            });
+
+            function displayFolderStructure(container, folder) {
+                Object.keys(folder).forEach(name => {
+                    const item = folder[name];
+                    const itemDiv = document.createElement('div');
+                    
+                    if (typeof item === 'object') {
+                        // Folder
+                        itemDiv.className = 'folder';
+                        itemDiv.textContent = name;
+                        itemDiv.onclick = function() {
+                            const subContainer = document.createElement('div');
+                            subContainer.className = 'folder-contents';
+                            displayFolderStructure(subContainer, item);
+                            itemDiv.appendChild(subContainer);
+                        };
+                    } else {
+                        // File
+                        itemDiv.className = 'file';
+                        itemDiv.textContent = name;
+                    }
+                    
+                    container.appendChild(itemDiv);
+                });
+            }
+
+            displayFolderStructure(folderInfo, folderMap);
+        });
+    </script>
+
+</body>
+</html>

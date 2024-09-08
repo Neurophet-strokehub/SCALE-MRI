@@ -6,6 +6,7 @@
     <title>Preview</title>
     <link href="/styles/style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
     <div class="w-full h-full relative overflow-hidden bg-[#282828]">
@@ -68,14 +69,17 @@
                                     <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
                                 </label>
                             </div>
-                            <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
-                                <div class="flex items-center gap-4 h-[45px]">
-                                    <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
-                                        <p class="text-sm sm:text-base font-medium text-center text-white">SWI</p>
-                                    </div>
-                                    <p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
-                                </div>
-                            </div>
+                            <div class="file-info-container">
+    <div class="file-info-content">
+        <button id="swi-button" class="swi-button">
+            <p class="swi-button-text">SWI</p>
+        </button>
+        <div id="swi-file-info" class="swi-file-info">Select the image file or folder</div>
+        <button id="remove-swi-button" class="remove-swi-button" style="display: none;">×</button>
+    </div>
+</div>
+
+                            
                             <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
                                 <div class="flex items-center gap-4 h-[45px]">
                                     <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
@@ -116,6 +120,9 @@
         </div>
     </div>
 
+    <!-- Hidden file input for SWI (folders) -->
+    <input type="file" id="swi-folder-input" style="display: none;" webkitdirectory mozdirectory msdirectory odirectory directory>
+
     <script>
         document.getElementById('logo').addEventListener('click', function() {
             window.location.reload();
@@ -124,6 +131,9 @@
         const resetButton = document.getElementById('reset-button');
         const radioImageButtons = document.querySelectorAll('input[name="radio-image"]');
         const radioScannerButtons = document.querySelectorAll('input[name="radio-scanner"]');
+        const swiFolderInput = document.getElementById('swi-folder-input');
+        const swiFileInfo = document.getElementById('swi-file-info');
+        const removeSwiButton = document.getElementById('remove-swi-button');
 
         function checkRadioButtons() {
             const imageChecked = Array.from(radioImageButtons).some(radio => radio.checked);
@@ -135,6 +145,39 @@
             resetButton.classList.toggle('text-white', isAnyChecked); // Make button look active
         }
 
+        function resetForm() {
+            radioImageButtons.forEach(radio => radio.checked = false);
+            radioScannerButtons.forEach(radio => radio.checked = false);
+            swiFileInfo.textContent = 'Select the image file or folder';
+            swiFileInfo.classList.remove('text-white');
+            swiFileInfo.classList.add('text-white/60');
+            removeSwiButton.style.display = 'none';
+            checkRadioButtons();
+        }
+
+        function openFolderDialog() {
+            swiFolderInput.click();
+        }
+
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                // Display only the filename
+                swiFileInfo.textContent = files[0].name;
+                swiFileInfo.classList.remove('text-white/60');
+                swiFileInfo.classList.add('text-white');
+                removeSwiButton.style.display = 'inline-block';
+            }
+        }
+
+        function removeFile() {
+            swiFolderInput.value = ''; // Clear the input
+            swiFileInfo.textContent = 'Select the image file or folder';
+            swiFileInfo.classList.remove('text-white');
+            swiFileInfo.classList.add('text-white/60');
+            removeSwiButton.style.display = 'none';
+        }
+
         radioImageButtons.forEach(radio => {
             radio.addEventListener('change', checkRadioButtons);
         });
@@ -143,16 +186,10 @@
             radio.addEventListener('change', checkRadioButtons);
         });
 
-		document.getElementById('logo').addEventListener('click', function() {
-        window.location.reload();
-    });
-
-    const resetButton = document.getElementById('reset-button');
-
-    resetButton.addEventListener('click', function() {
-        // Reload the page to mimic the F5 effect
-        window.location.reload();
-    });
+        resetButton.addEventListener('click', resetForm);
+        document.getElementById('swi-button').addEventListener('click', openFolderDialog);
+        swiFolderInput.addEventListener('change', handleFileUpload);
+        removeSwiButton.addEventListener('click', removeFile);
     </script>
 </body>
 </html>
