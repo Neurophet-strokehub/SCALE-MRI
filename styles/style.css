@@ -67,28 +67,35 @@ body {
 .remove-swi-button:hover, .remove-phase-button:hover {
     background-color: rgba(255, 255, 255, 0.30); /* bg-white/30 */
 }
+
 /* Reset Button Styles */
 .reset-button {
-  background-color: #e53e3e; /* Red background */
+  display: flex;
+  padding: 10px 16px; /* Padding */
+  justify-content: center;
+  align-items: center;
+  gap: 6px; /* Space between icon and text */
+  border-radius: 3px; /* Rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.20); /* Border color */
+  background-color: #4a4a4a; /* Dark gray background */
   color: #ffffff; /* White text */
-  padding: 0.5rem 1rem; /* Padding */
-  border-radius: 0.25rem; /* Rounded corners */
-  border: none; /* No border */
-  cursor: pointer; /* Pointer cursor on hover */
   font-size: 0.875rem; /* Text size */
   font-weight: bold; /* Bold text */
+  cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.2s, opacity 0.2s; /* Smooth transitions */
 }
 
 .reset-button:hover {
-  background-color: #c53030; /* Darker red on hover */
+  background-color: #6c6c6c; /* Slightly lighter gray on hover */
 }
 
 .reset-button:disabled {
-  background-color: #f56565; /* Light red when disabled */
-  cursor: not-allowed; /* Not allowed cursor */
+  background-color: #2d2d2d; /* Darker gray when disabled */
+  cursor: default; /* Default cursor when disabled */
   opacity: 0.5; /* Semi-transparent */
 }
+
+
 
 
 .run-button {
