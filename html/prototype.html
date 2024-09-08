@@ -7,6 +7,18 @@
     <title>Preview</title>
     <link href="/styles/style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for radio button groups */
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+        }
+        .radio-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -66,16 +78,14 @@
                         <div class="flex flex-col justify-start items-start relative gap-3">
                             <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">Select Images</p>
                             <p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
-                            <div class="flex gap-8">
-                                <label class="container">
+                            <div class="radio-group">
+                                <label class="radio-container">
                                     <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
-                                    <input type="radio" checked name="radio">
-                                    <span class="checkmark"></span>
+                                    <input type="radio" checked name="radio-image">
                                 </label>
-                                <label class="container">
+                                <label class="radio-container">
                                     <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
-                                    <input type="radio" name="radio">
-                                    <span class="checkmark"></span>
+                                    <input type="radio" name="radio-image">
                                 </label>
                             </div>
                             <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
@@ -103,16 +113,14 @@
                     <div class="flex flex-col justify-start items-start gap-5">
                         <div class="flex flex-col w-full gap-3">
                             <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
-                            <div class="flex flex-col w-full gap-3">
-                                <label class="container">
+                            <div class="radio-group">
+                                <label class="radio-container">
                                     <p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
-                                    <input type="radio" checked name="radio">
-                                    <span class="checkmark"></span>
+                                    <input type="radio" checked name="radio-scanner">
                                 </label>
-                                <label class="container">
+                                <label class="radio-container">
                                     <p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
-                                    <input type="radio" name="radio">
-                                    <span class="checkmark"></span>
+                                    <input type="radio" name="radio-scanner">
                                 </label>
                             </div>
                         </div>
