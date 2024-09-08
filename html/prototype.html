@@ -1,161 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preview</title>
     <link href="/styles/style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* Custom styles for radio button groups */
-      .radio-group {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        /* Ensure it wraps on smaller screens */
-      }
-      .radio-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      /* Increase radio button size */
-      .radio-container input[type="radio"] {
-        width: 1rem;
-        height: 1.3rem;
-        accent-color: #1077fe;
-        /* Optional: change radio button color */
-      }
-    </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="w-full h-full relative overflow-hidden bg-[#282828]">
-
-      <!-- Header -->
-      <div class="header">
-        <div class="w-full flex justify-between items-center bg-[#383838] px-5">
-
-          <!-- Logo or main icon -->
-          <div class="flex items-center gap-1 pl-4">
-            <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
-          </div>
-
-          <!-- Header right section -->
-          <div class="h-12 flex justify-end items-center gap-3">
-
-            <!-- Button 1 -->
-            <div class="w-6 h-6 icon-disabled flex justify-center items-center">
-              <img src="/logo/02_accessbar-setting.png" alt="Accessbar Setting" class="w-6 h-6">
-            </div>
-
-            <!-- Divider -->
-            <div class="h-4 w-px bg-white"></div>
-
-            <!-- Minimize Button -->
-            <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
-              </svg>
-            </button>
-
-            <!-- Maximize Button -->
-            <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-              <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
-              </svg>
-            </button>
-
-            <!-- Close Button -->
-            <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
-              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Content -->
-      <div class="flex flex-col justify-start items-start absolute left-1/2 transform -translate-x-1/2 top-12 overflow-hidden gap-10 pt-10 bg-[#282828] sm:max-w-full lg:max-w-[600px]">
-
-        <!-- Content Section -->
-        <div class="flex flex-col justify-start items-start gap-6">
-
-          <!-- Analysis Section -->
-          <div class="flex flex-col justify-start items-start relative gap-5">
-            <p class="w-full text-lg sm:text-xl md:text-2xl font-bold text-left text-white">Run Analysis</p>
-            <p class="w-full text-sm sm:text-base md:text-lg text-left text-white">Run analysis to detect cerebral microbleeds.</p>
-          </div>
-          <div class="w-full h-px bg-white/20"></div>
-
-          <!-- Image Selection Section -->
-          <div class="flex flex-col justify-start items-start gap-6">
-            <div class="flex flex-col justify-start items-start gap-5">
-              <div class="flex flex-col justify-start items-start relative gap-3">
-                <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">Select Images</p>
-                <p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
-                <div class="radio-group">
-                  <label class="radio-container">
-                    <input type="radio" name="radio-image">
-                    <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
-                  </label>
-                  <label class="radio-container">
-                    <input type="radio" name="radio-image">
-                    <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
-                  </label>
+        <!-- Header -->
+        <div class="header">
+            <div class="w-full flex justify-between items-center bg-[#383838] px-5">
+                <!-- Logo or main icon -->
+                <div class="flex items-center gap-1 pl-4">
+                    <img id="logo" src="/logo/Product Logo-SCALE MRI.png" alt="Product Logo" class="cursor-pointer">
                 </div>
-                <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
-                  <div class="flex items-center gap-4 h-[45px]">
-                    <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
-                      <p class="text-sm sm:text-base font-medium text-center text-white">SWI</p>
+                <!-- Header right section -->
+                <div class="h-12 flex justify-end items-center gap-3">
+                    <!-- Buttons and Icons -->
+                    <div class="w-6 h-6 icon-disabled flex justify-center items-center">
+                        <img src="/logo/02_accessbar-setting.png" alt="Accessbar Setting" class="w-6 h-6">
                     </div>
-                    <p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
-                  </div>
+                    <div class="h-4 w-px bg-white"></div>
+                    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path>
+                        </svg>
+                    </button>
+                    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                        <svg id="maximizeIcon" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"></rect>
+                        </svg>
+                    </button>
+                    <button class="w-6 h-6 flex justify-center items-center p-1 rounded-sm icon-disabled">
+                        <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
                 </div>
-                <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
-                  <div class="flex items-center gap-4 h-[45px]">
-                    <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
-                      <p class="text-sm sm:text-base font-medium text-center text-white">Phase</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col justify-start items-start absolute left-1/2 transform -translate-x-1/2 top-12 overflow-hidden gap-10 pt-10 bg-[#282828] sm:max-w-full lg:max-w-[600px]">
+            <!-- Content Section -->
+            <div class="flex flex-col justify-start items-start gap-6">
+                <!-- Analysis Section -->
+                <div class="flex flex-col justify-start items-start relative gap-5">
+                    <p class="w-full text-lg sm:text-xl md:text-2xl font-bold text-left text-white">Run Analysis</p>
+                    <p class="w-full text-sm sm:text-base md:text-lg text-left text-white">Run analysis to detect cerebral microbleeds.</p>
+                </div>
+                <div class="w-full h-px bg-white/20"></div>
+                <!-- Image Selection Section -->
+                <div class="flex flex-col justify-start items-start gap-6">
+                    <div class="flex flex-col justify-start items-start gap-5">
+                        <div class="flex flex-col justify-start items-start relative gap-3">
+                            <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">Select Images</p>
+                            <p class="w-full text-sm sm:text-base md:text-base text-left text-white/90">Use SWI and Phase images.</p>
+                            <div class="radio-group">
+                                <label class="radio-container">
+                                    <input type="radio" name="radio-image" id="dicom-radio">
+                                    <p class="text-sm sm:text-base text-left text-white/90">DICOM</p>
+                                </label>
+                                <label class="radio-container">
+                                    <input type="radio" name="radio-image" id="nifti-radio">
+                                    <p class="text-sm sm:text-base text-left text-white/90">NIfTI</p>
+                                </label>
+                            </div>
+                            <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
+                                <div class="flex items-center gap-4 h-[45px]">
+                                    <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
+                                        <p class="text-sm sm:text-base font-medium text-center text-white">SWI</p>
+                                    </div>
+                                    <p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-3 px-4 py-3 bg-white/5">
+                                <div class="flex items-center gap-4 h-[45px]">
+                                    <div class="w-[160px] flex items-center justify-center gap-2 px-3 py-2 rounded-[3px] bg-white/30 hover:bg-white/40 transition-colors duration-200">
+                                        <p class="text-sm sm:text-base font-medium text-center text-white">Phase</p>
+                                    </div>
+                                    <p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="flex-grow text-sm sm:text-base text-left text-white/60">Select the image file or folder</p>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="w-full h-px bg-white/20"></div>
-
-          <!-- MRI Scanner Type Section -->
-          <div class="flex flex-col justify-start items-start gap-6">
-            <div class="flex flex-col justify-start items-start gap-5">
-              <div class="flex flex-col w-full gap-3">
-                <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
-                <div class="radio-group">
-                  <label class="radio-container">
-                    <input type="radio" name="radio-scanner">
-                    <p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
-                  </label>
-                  <label class="radio-container">
-                    <input type="radio" name="radio-scanner">
-                    <p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
-                  </label>
+                <div class="w-full h-px bg-white/20"></div>
+                <!-- MRI Scanner Type Section -->
+                <div class="flex flex-col justify-start items-start gap-6">
+                    <div class="flex flex-col justify-start items-start gap-5">
+                        <div class="flex flex-col w-full gap-3">
+                            <p class="w-full text-base sm:text-lg md:text-xl font-bold text-left text-white">MRI Scanner Type</p>
+                            <div class="radio-group">
+                                <label class="radio-container">
+                                    <input type="radio" name="radio-scanner" id="left-handed-radio">
+                                    <p class="text-sm sm:text-base text-left text-white/90">Left-handed</p>
+                                </label>
+                                <label class="radio-container">
+                                    <input type="radio" name="radio-scanner" id="right-handed-radio">
+                                    <p class="text-sm sm:text-base text-left text-white/90">Right-handed</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Buttons -->
-        <div class="flex justify-end gap-4 w-full mt-6">
-          <button class="w-[120px] px-5 py-3 rounded-[3px] border border-white/10 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-white/10 transition-colors duration-200">Reset</button>
-          <button class="w-[120px] px-5 py-3 rounded-[3px] bg-[#1077fe]/20 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-[#1077fe]/30 active:bg-[#1077fe]/40 transition-colors duration-200">Run</button>
+            <!-- Buttons -->
+            <div class="flex justify-end gap-4 w-full mt-6">
+                <button id="reset-button" class="w-[120px] px-5 py-3 rounded-[3px] border border-white/10 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-white/10 transition-colors duration-200">Reset</button>
+                <button class="w-[120px] px-5 py-3 rounded-[3px] bg-[#1077fe]/20 text-sm sm:text-base font-medium text-center text-white/20 hover:bg-[#1077fe]/30 active:bg-[#1077fe]/40 transition-colors duration-200">Run</button>
+            </div>
         </div>
-      </div>
     </div>
-    < <script>
-      document.getElementById('logo').addEventListener('click', function() {
-      window.location.reload();
-      });
-      </script>
+
+    <script>
+        document.getElementById('logo').addEventListener('click', function() {
+            window.location.reload();
+        });
+
+        const resetButton = document.getElementById('reset-button');
+        const radioButtons = document.querySelectorAll('input[name="radio-image"]');
+
+        function checkRadioButtons() {
+            const isChecked = Array.from(radioButtons).some(radio => radio.checked);
+            resetButton.disabled = !isChecked;
+            resetButton.classList.toggle('text-white/20', !isChecked); // Make button look inactive
+            resetButton.classList.toggle('text-white', isChecked); // Make button look active
+        }
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', checkRadioButtons);
+        });
+
+        // Initial check in case a radio button is pre-selected
+        checkRadioButtons();
+    </script>
   </body>
 </html>
